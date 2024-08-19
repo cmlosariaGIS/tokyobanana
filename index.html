@@ -105,11 +105,39 @@
             align-items: center;
             margin-right: 10px;
             cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
         }
 
         #locationPhone {
             font-size: 18px;
             color: #4CAF50;
+        }
+
+        .google-maps-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .google-maps-button {
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            margin-right: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            /* Add this line for shadow */
+        }
+
+        .google-maps-text {
+            font-size: 18px;
+            color: #4285F4;
         }
     </style>
 </head>
@@ -133,6 +161,12 @@
                 <span class="material-symbols-outlined">call</span>
             </button>
             <span id="locationPhone"></span>
+        </div>
+        <div class="google-maps-container">
+            <button class="google-maps-button" id="googleMapsButton">
+                <span class="material-symbols-outlined">map</span>
+            </button>
+            <span class="google-maps-text">Google Maps</span>
         </div>
     </div>
     <script>
@@ -158,29 +192,40 @@
         });
 
         var locations = [
-            {
-                name: "Kayabacho Sky Heights",
-                address: "〒104-0033 1-30 Shinkawa, Chuo-ku, Tokyo",
-                phone: "+81335537889",
-                coords: [35.6761483, 139.7855743]
-            },
-            {
-                name: "GLOBIS University (Main Campus)",
-                address: "〒102-0084 Tokyo, Chiyoda City, Nibancho, 5-1 Sumitomo Fudosan Kojimachi Bldg",
-                coords: [35.6854057, 139.7343067]
-            },
-            {
-                name: "GLOBIS University (Annex)",
-                address: "102-0083 Tokyo, Chiyoda City, Kojimachi, 4 Chome−2−6, Sumitomo Fudosan Kojimachi First Bldg., 10F",
-                coords: [35.6844805, 139.7359373]
-            },
-            {
-                name: "Embassy of the Republic of the Philippines",
-                address: "5 Chome-15-5 Roppongi, Minato City, Tokyo 106-8537, Japan",
-                phone: "+81355621600",
-                coords: [35.6600849, 139.7329619]
-            }
-        ];
+    {
+        name: "Kayabacho Sky Heights",
+        address: "〒104-0033 1-30 Shinkawa, Chuo-ku, Tokyo",
+        phone: "+81335537889",
+        coords: [35.6761483, 139.7855743],
+        googleMapsLink: "https://www.google.com/maps/place/Kayabacho+Sky+Heights/@35.6761701,139.7830198,898m/data=!3m2!1e3!4b1!4m6!3m5!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf?entry=ttu"
+    },
+    {
+        name: "GLOBIS University (Main Campus)",
+        address: "〒102-0084 Tokyo, Chiyoda City, Nibancho, 5-1 Sumitomo Fudosan Kojimachi Bldg",
+        coords: [35.6854057, 139.7343067],
+        googleMapsLink: "https://www.google.com/maps/place/Graduate+School+of+Management,+GLOBIS+University/@35.6854028,139.7354054,287m/data=!3m3!1e3!4b1!5s0x60188c637c6b9451:0xa84b8ae5bd2e0543!4m6!3m5!1s0x60188c637954c8f7:0xf45136104fe98b59!8m2!3d35.6854014!4d139.7368816!16s%2Fm%2F0bhbx0c?entry=ttu"
+    },
+    {
+        name: "GLOBIS University (Annex)",
+        address: "102-0083 Tokyo, Chiyoda City, Kojimachi, 4 Chome−2−6, Sumitomo Fudosan Kojimachi First Bldg., 10F",
+        coords: [35.6844805, 139.7359373],
+        googleMapsLink: "https://www.google.com/maps/place/Graduate+School+of+Management,+GLOBIS+University/@35.6854028,139.7354054,287m/data=!3m3!1e3!4b1!5s0x60188c637c6b9451:0xa84b8ae5bd2e0543!4m6!3m5!1s0x60188c637954c8f7:0xf45136104fe98b59!8m2!3d35.6854014!4d139.7368816!16s%2Fm%2F0bhbx0c?entry=ttu"
+    },
+    {
+        name: "Embassy of the Republic of the Philippines",
+        address: "5 Chome-15-5 Roppongi, Minato City, Tokyo 106-8537, Japan",
+        phone: "+81355621600",
+        coords: [35.6600849, 139.7329619],
+        googleMapsLink: "https://www.google.com/maps/place/Embassy+of+the+Republic+of+the+Philippines/@35.6600849,139.7329619,899m/data=!3m2!1e3!4b1!4m6!3m5!1s0x60188b79ab546613:0x4ee8940a9c1dd529!8m2!3d35.6600806!4d139.7355368!16s%2Fg%2F11fqqfg2lw?entry=ttu"
+    },
+    {
+        name: "Fukagawa Police Station Eidaibashi Of Social Safety Center",
+        address: "1 Chome-1-19 Saga, Koto City, Tokyo 135-0031, Japan",
+        phone: "+81336410110",
+        coords: [35.676246,139.7885293],
+        googleMapsLink: "https://www.google.com/maps/place/Fukagawa+Police+Station+Eidaibashi+Of+Social+Safety+Center/@35.6766717,139.7786685,2277m/data=!3m1!1e3!4m10!1m2!2m1!1spolice+station!3m6!1s0x6018896a04595555:0x1e7f8a9d4aefa239!8m2!3d35.6762397!4d139.7886337!15sCg5wb2xpY2Ugc3RhdGlvbpIBCnBvbGljZV9ib3jgAQA!16s%2Fg%2F11cndb1pcg?entry=ttu"
+    }
+];
 
         locations.forEach(function (loc) {
             var marker = L.marker(loc.coords, { icon: customIcon }).addTo(map);
@@ -216,6 +261,8 @@
             document.getElementById('locationAddress').textContent = location.address;
             var phoneElement = document.getElementById('locationPhone');
             var phoneButton = document.getElementById('phoneButton');
+            var googleMapsButton = document.getElementById('googleMapsButton');
+
             if (location.phone) {
                 phoneElement.textContent = location.phone;
                 phoneButton.style.display = 'flex';
@@ -226,6 +273,12 @@
                 phoneElement.textContent = 'Phone not available';
                 phoneButton.style.display = 'none';
             }
+
+            // Google Maps Button
+            googleMapsButton.onclick = function () {
+                window.open(location.googleMapsLink, '_blank');
+            };
+
             document.getElementById('slideUpPanel').classList.add('active');
         }
 
