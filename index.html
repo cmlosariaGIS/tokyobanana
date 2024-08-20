@@ -318,7 +318,21 @@
         });
 
         var clinicIcon = L.icon({
-            iconUrl: 'https://i.ibb.co/m66Y6J3/icons8-clinic-96.png',
+            iconUrl: 'https://i.ibb.co/PGMd8Cj/icons8-clinic-96-1.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+
+        var convenienceStoreIcon = L.icon({
+            iconUrl: 'https://i.ibb.co/x6tVXBM/icons8-grocery-store-96.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+
+        var restaurantIcon = L.icon({
+            iconUrl: 'https://i.ibb.co/6W6gCqJ/icons8-plate-96.png',
             iconSize: [32, 32],
             iconAnchor: [16, 32],
             popupAnchor: [0, -32]
@@ -434,6 +448,85 @@
                 phone: "+81352011555",
                 coords: [35.6827122, 139.771743],
                 googleMapsLink: "https://www.google.com/maps/place/Nihonbashi+Women's+Clinic/@35.6827122,139.771743,173m/data=!3m2!1e3!5s0x60188bfd8d2ea91f:0xe23baf251f65e9f5!4m10!1m2!2m1!1sClinic!3m6!1s0x60188bfd8d3aaaab:0x58f8a43271c3419f!8m2!3d35.6827233!4d139.7723565!15sCgZDbGluaWOSAQ5tZWRpY2FsX2NsaW5pY-ABAA!16s%2Fg%2F11cn9tq70y?entry=ttu"
+            },
+            {
+                name: "Ministop Shinkawa 1-chome (ミニストップ 新川１丁目店)",
+                address: "1 Chome-25-12 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
+                phone: "+81335233108",
+                coords: [35.6762694, 139.7845467],
+                googleMapsLink: "https://www.google.com/maps/place/Natural+Lawson/@35.6763915,139.7844315,235m/data=!3m2!1e3!5s0x60188942f15e3e39:0xf7b97433e7a37b79!4m14!1m7!3m6!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!2sKayabacho+Sky+Heights!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf!3m5!1s0x60188942f16fb989:0xb328e91882aea49!8m2!3d35.6768144!4d139.7852001!16s%2Fg%2F1vcl3rf0?entry=ttu"
+            },
+            {
+                name: "Natural Lawson (ナチュラルローソン 新川一丁目店)",
+                address: "1 Chome-24-1 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
+                phone: "+81335235430",
+                coords: [35.6768123, 139.7849786],
+                googleMapsLink: "https://www.google.com/maps/place/Natural+Lawson/@35.6763915,139.7844315,235m/data=!3m2!1e3!5s0x60188942f15e3e39:0xf7b97433e7a37b79!4m14!1m7!3m6!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!2sKayabacho+Sky+Heights!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf!3m5!1s0x60188942f16fb989:0xb328e91882aea49!8m2!3d35.6768144!4d139.7852001!16s%2Fg%2F1vcl3rf0?entry=ttu"
+            },
+            {
+                name: "7-Eleven (セブン-イレブン 中央区新川１丁目店)",
+                address: "1 Chome-21-5 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
+                phone: "+81335555868",
+                coords: [35.6769623, 139.7856929],
+                googleMapsLink: "https://www.google.com/maps/place/7-Eleven/@35.6769623,139.7856929,126m/data=!3m2!1e3!5s0x6018893bf7a3d399:0x3e99d29720846fdf!4m14!1m7!3m6!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!2sKayabacho+Sky+Heights!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf!3m5!1s0x601889425eafe3e7:0x13c48c91302bec94!8m2!3d35.6769323!4d139.7859845!16s%2Fg%2F1tjjpbrg?entry=ttu"
+            },
+
+            {
+                name: "Tsukemen Sumida (つけ麺隅田 新川店)",
+                address: "1 Chome-31-4 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
+                phone: "+81355409711",
+                coords: [35.6758793, 139.7861668],
+                googleMapsLink: "https://www.google.com/maps/place/Tsukemen+Sumida/@35.6758793,139.7861668,17z/data=!3m1!4b1!4m6!3m5!1s0x601889425f9134c1:0x6f615321c30f97fc!8m2!3d35.6758793!4d139.7861668!16s%2Fg%2F1tg6vkm2"
+            },
+            {
+                name: "Yoshino",
+                address: "2 Chome-15-2 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
+                phone: "+81335538876",
+                coords: [35.6753460619295, 139.78325230857487],
+                googleMapsLink: "https://www.google.com/maps/place/Yoshino/@35.6752461,139.7822746,205m/data=!3m1!1e3!4m10!1m2!2m1!1sRestaurants!3m6!1s0x60188942b3680b27:0x823bb514916ac1cf!8m2!3d35.6752884!4d139.7831908!15sCgtSZXN0YXVyYW50c1oNIgtyZXN0YXVyYW50c5IBE3RvbmthdHN1X3Jlc3RhdXJhbnSaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUlhhamt5YVVOUkVBReABAA!16s%2Fg%2F1tgz5glh?entry=ttu"
+            },
+
+            {
+                name: "Tsukemen Sumida (つけ麺隅田 新川店)",
+                address: "1 Chome-31-4 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
+                phone: "+81355409711",
+                coords: [35.6758793, 139.7861668],
+                googleMapsLink: "https://www.google.com/maps/place/Tsukemen+Sumida/@35.6758793,139.7861668,17z/data=!3m1!4b1!4m6!3m5!1s0x601889425f9134c1:0x6f615321c30f97fc!8m2!3d35.6758793!4d139.7861668!16s%2Fg%2F1tg6vkm2"
+            },
+            {
+                name: "Yoshino",
+                address: "2 Chome-15-2 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
+                phone: "+81335538876",
+                coords: [35.6753460619295, 139.78325230857487],
+                googleMapsLink: "https://www.google.com/maps/place/Yoshino/@35.6752461,139.7822746,205m/data=!3m1!1e3!4m10!1m2!2m1!1sRestaurants!3m6!1s0x60188942b3680b27:0x823bb514916ac1cf!8m2!3d35.6752884!4d139.7831908!15sCgtSZXN0YXVyYW50c1oNIgtyZXN0YXVyYW50c5IBE3RvbmthdHN1X3Jlc3RhdXJhbnSaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUlhhamt5YVVOUkVBReABAA!16s%2Fg%2F1tgz5glh?entry=ttu"
+            },
+            {
+                name: "Delhi Shinkawa (新川デリー)",
+                address: "Japan, 〒104-0033 Tokyo, Chuo City, Shinkawa, 1 Chome−19−10 アルファスタイル茅場町 1階",
+                phone: "+81332978922",
+                coords: [35.67794691420887, 139.78506452457975],
+                googleMapsLink: "https://www.google.com/maps/place/Delhi+Shinkawa/@35.6779396,139.7791681,901m/data=!3m1!1e3!4m10!1m2!2m1!1sRestaurants!3m6!1s0x60188942b46a7cd5:0xa27a1084f0f24efa!8m2!3d35.6779552!4d139.785076!15sCgtSZXN0YXVyYW50c1oNIgtyZXN0YXVyYW50c5IBEWluZGlhbl9yZXN0YXVyYW504AEA!16s%2Fg%2F1td7hqf5?entry=ttu"
+            },
+            {
+                name: "PEACE COFFEE ROASTERS 新川店",
+                address: "1 Chome-29-10 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
+                phone: "+81362283353",
+                coords: [35.67588323183024, 139.7852323116086],
+                googleMapsLink: "https://www.google.com/maps/place/PEACE+COFFEE+ROASTERS+%E6%96%B0%E5%B7%9D%E5%BA%97/@35.6758496,139.7851915,85m/data=!3m1!1e3!4m6!3m5!1s0x601889bf0d6fc033:0x73710cc6dfb0b595!8m2!3d35.6758602!4d139.7852339!16s%2Fg%2F11qh58l0jr?entry=ttu"
+            },
+            {
+                name: "Medetai-ya",
+                address: "Japan, 〒104-0033 Tokyo, Chuo City, Shinkawa, 1 Chome−21−8 石田ビル",
+                phone: "+819032336844",
+                coords: [35.676830276457736, 139.78613488283935],
+                googleMapsLink: "https://www.google.com/maps/place/Medetai-ya/@35.6767224,139.7856747,87m/data=!3m2!1e3!5s0x601889426786ee93:0xe6913ecbdccefe25!4m6!3m5!1s0x6018894258cc88d1:0x4229f33c9d129a95!8m2!3d35.67681!4d139.7861418!16s%2Fg%2F11bbx0b_wm?entry=ttu"
+            },
+            {
+                name: "DualY wine & tapas",
+                address: "Japan, 〒104-0033 Tokyo, Chuo City, Shinkawa, 1 Chome−30−7 茅場町スカイハイツ",
+                phone: "+81355420187",
+                coords: [35.67622136787882, 139.7854632089664],
+                googleMapsLink: "https://www.google.com/maps/place/DualY+wine+%26+tapas/@35.6761679,139.7852444,70m/data=!3m1!1e3!4m6!3m5!1s0x601889ee13d6df4b:0x28e3306dff488fb0!8m2!3d35.6762248!4d139.785463!16s%2Fg%2F11h7kvjmmt?entry=ttu"
             }
 
         ];
@@ -518,6 +611,20 @@
                 icon = pharmacyIcon;
             } else if (loc.name.toLowerCase().includes('clinic')) {
                 icon = clinicIcon;
+            } else if (loc.name.toLowerCase().includes('ministop') || 
+                       loc.name.toLowerCase().includes('lawson') || 
+                       loc.name.toLowerCase().includes('7-eleven')) {
+                icon = convenienceStoreIcon;
+            } else if (loc.name.toLowerCase().includes('restaurant') ||
+                       loc.name.toLowerCase().includes('café') ||
+                       loc.name.toLowerCase().includes('cafe') ||
+                       loc.name.toLowerCase().includes('coffee') ||
+                       loc.name.toLowerCase().includes('delhi') ||
+                       loc.name.toLowerCase().includes('tsukemen') ||
+                       loc.name.toLowerCase().includes('medetai-ya') ||
+                       loc.name.toLowerCase().includes('dualy') ||
+                       loc.name.toLowerCase().includes('yoshino')) {
+                icon = restaurantIcon;
             } else {
                 icon = customIcon;
             }
@@ -538,7 +645,7 @@
 
             // Function to show/hide tooltip based on zoom level
             function updateTooltipVisibility() {
-                if (map.getZoom() >= 14) {
+                if (map.getZoom() >= 19) {
                     marker.bindTooltip(tooltip);
                     marker.openTooltip();
                 } else {
@@ -552,8 +659,6 @@
             // Update visibility on zoom
             map.on('zoomend', updateTooltipVisibility);
         });
-
-
 
         function createUserLocationMarker(latlng) {
             return L.circleMarker(latlng, {
@@ -606,23 +711,7 @@
             }, 2000); // Hide the message after 2 seconds
         }
 
-        function getAddressFromLatLng(lat, lon) {
-            var url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
 
-            return fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.display_name) {
-                        return data.display_name;
-                    } else {
-                        return "Address not found";
-                    }
-                })
-                .catch(error => {
-                    console.error("Error fetching address:", error);
-                    return "Error fetching address";
-                });
-        }
 
         function openGoogleMaps(lat, lon) {
             var url = `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
