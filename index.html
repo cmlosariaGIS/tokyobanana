@@ -168,6 +168,32 @@
         .leaflet-tooltip-right:before {
             border-right-color: rgba(255, 255, 255, 0.8);
         }
+
+        @keyframes glowing {
+            0% { box-shadow: 0 0 5px #2b92e9; }
+            50% { box-shadow: 0 0 20px #2b92e9; }
+            100% { box-shadow: 0 0 5px #2b92e9; }
+        }
+
+        .user-location-marker {
+            border-radius: 50%;
+            border: 3px solid #2b92e9;
+            animation: glowing 1.5s infinite;
+        }
+
+        .copy-button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
     </style>
 </head>
 
@@ -488,6 +514,148 @@
             map.on('zoomend', updateTooltipVisibility);
         });
 
+
+
+        function createUserLocationMarker(latlng) {
+    return L.circleMarker(latlng, {
+        radius: 8,
+        fillColor: "#2b92e9",
+        color: "#fff",
+        weight: 3,
+        opacity: 1,
+        fillOpacity: 0.8,
+        className: 'user-location-marker'
+    });
+}
+
+var isTrackingUser = false;
+        var userLocationMarker = null;
+        var watchId = null;
+
+        function getAddressFromLatLng(lat, lon) {
+            var url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+            
+            return fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.display_name) {
+                        return data.display_name;
+                    } else {
+                        return "Address not found";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching address:", error);
+                    return "Error fetching address";
+                });
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                console.log('Copying to clipboard was successful!');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+
+        function getAddressFromLatLng(lat, lon) {
+            var url = `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`;
+            
+            return fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.display_name) {
+                        return data.display_name;
+                    } else {
+                        return "Address not found";
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching address:", error);
+                    return "Error fetching address";
+                });
+        }
+
+        function trackUserLocation() {
+            if ("geolocation" in navigator) {
+                isTrackingUser = !isTrackingUser; // Toggle tracking state
+                updateTrackingButtonState();
+                
+                if (isTrackingUser) {
+                    watchId = navigator.geolocation.watchPosition(function(position) {
+                        var lat = position.coords.latitude;
+                        var lon = position.coords.longitude;
+                        var accuracy = position.coords.accuracy;
+
+                        // Remove existing user location marker if it exists
+                        if (userLocationMarker) {
+                            map.removeLayer(userLocationMarker);
+                        }
+
+                        // Create and add new user location marker
+                        userLocationMarker = createUserLocationMarker([lat, lon]).addTo(map);
+                        
+                        // Fetch address and update popup
+                        getAddressFromLatLng(lat, lon).then(address => {
+                            var popupContent = `
+                                <div>
+                                    <p>You are currently at:</p>
+                                    <p id="user-address">${address}</p>
+                                    <!--<p>(Accuracy: ${accuracy.toFixed(2)} meters)</p>-->
+                                    <button class="copy-button" onclick="copyToClipboard(document.getElementById('user-address').textContent)">Copy Address</button>
+                                </div>
+                            `;
+                            userLocationMarker.bindPopup(popupContent).openPopup();
+                        });
+
+                        // Pan map to user's location
+                        map.panTo([lat, lon]);
+
+                    }, function(error) {
+                        console.error("Error: " + error.message);
+                        isTrackingUser = false;
+                        updateTrackingButtonState();
+                    }, {
+                        enableHighAccuracy: true,
+                        timeout: 5000,
+                        maximumAge: 0
+                    });
+                } else {
+                    // Stop tracking
+                    if (watchId !== null) {
+                        navigator.geolocation.clearWatch(watchId);
+                        watchId = null;
+                    }
+                    if (userLocationMarker) {
+                        map.removeLayer(userLocationMarker);
+                        userLocationMarker = null;
+                    }
+                }
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }
+        }
+
+        // Modify the track location button to toggle tracking
+        var trackLocationButton = L.control({position: 'topleft'});
+        trackLocationButton.onAdd = function(map) {
+            var div = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+            div.innerHTML = '<a href="#" id="trackLocationBtn" title="Track My Location" role="button" aria-label="Track My Location" onclick="trackUserLocation(); return false;"><span class="material-symbols-outlined" style="font-size: 20px; line-height: 30px;">my_location</span></a>';
+            return div;
+        };
+        trackLocationButton.addTo(map);
+
+        // Function to update button appearance based on tracking state
+        function updateTrackingButtonState() {
+            var button = document.getElementById('trackLocationBtn');
+            if (isTrackingUser) {
+                button.style.backgroundColor = '#4CAF50';
+                button.querySelector('span').style.color = 'white';
+            } else {
+                button.style.backgroundColor = '';
+                button.querySelector('span').style.color = '';
+            }
+        }
 
     </script>
 </body>
