@@ -233,7 +233,48 @@
             margin-top: 5px;
             text-align: center;
         }
+
+        #exitConfirmDialog {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .exitConfirmContent {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 300px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .exitConfirmBtn {
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        #confirmExit {
+            background-color: #d9534f;
+        }
+
+        #cancelExit {
+            background-color: #5cb85c;
+        }
     </style>
+
+
 </head>
 
 <body>
@@ -267,6 +308,15 @@
         </div>
 
     </div>
+
+    <div id="exitConfirmDialog">
+        <div class="exitConfirmContent">
+            <p>Are you sure you want to exit Tokyo Banana App?</p>
+            <button id="confirmExit" class="exitConfirmBtn">Yes</button>
+            <button id="cancelExit" class="exitConfirmBtn">No</button>
+        </div>
+    </div>
+
     <script>
         var map = L.map('map').setView([35.6761483, 139.7855743], 12);
 
@@ -611,19 +661,19 @@
                 icon = pharmacyIcon;
             } else if (loc.name.toLowerCase().includes('clinic')) {
                 icon = clinicIcon;
-            } else if (loc.name.toLowerCase().includes('ministop') || 
-                       loc.name.toLowerCase().includes('lawson') || 
-                       loc.name.toLowerCase().includes('7-eleven')) {
+            } else if (loc.name.toLowerCase().includes('ministop') ||
+                loc.name.toLowerCase().includes('lawson') ||
+                loc.name.toLowerCase().includes('7-eleven')) {
                 icon = convenienceStoreIcon;
             } else if (loc.name.toLowerCase().includes('restaurant') ||
-                       loc.name.toLowerCase().includes('café') ||
-                       loc.name.toLowerCase().includes('cafe') ||
-                       loc.name.toLowerCase().includes('coffee') ||
-                       loc.name.toLowerCase().includes('delhi') ||
-                       loc.name.toLowerCase().includes('tsukemen') ||
-                       loc.name.toLowerCase().includes('medetai-ya') ||
-                       loc.name.toLowerCase().includes('dualy') ||
-                       loc.name.toLowerCase().includes('yoshino')) {
+                loc.name.toLowerCase().includes('café') ||
+                loc.name.toLowerCase().includes('cafe') ||
+                loc.name.toLowerCase().includes('coffee') ||
+                loc.name.toLowerCase().includes('delhi') ||
+                loc.name.toLowerCase().includes('tsukemen') ||
+                loc.name.toLowerCase().includes('medetai-ya') ||
+                loc.name.toLowerCase().includes('dualy') ||
+                loc.name.toLowerCase().includes('yoshino')) {
                 icon = restaurantIcon;
             } else {
                 icon = customIcon;
@@ -802,6 +852,47 @@
             }
         }
 
+        // Exit Confirmation
+        // Exit Confirmation
+        let isExitAttempted = false;
+
+        function showExitConfirmDialog() {
+            document.getElementById('exitConfirmDialog').style.display = 'block';
+        }
+
+        function hideExitConfirmDialog() {
+            document.getElementById('exitConfirmDialog').style.display = 'none';
+        }
+
+        document.getElementById('confirmExit').addEventListener('click', function () {
+            hideExitConfirmDialog();
+            isExitAttempted = false;
+            window.location.href = 'about:blank';
+        });
+
+        document.getElementById('cancelExit').addEventListener('click', function () {
+            hideExitConfirmDialog();
+            isExitAttempted = false;
+        });
+
+        window.addEventListener('beforeunload', function (e) {
+            if (!isExitAttempted) {
+                e.preventDefault();
+                e.returnValue = '';
+                showExitConfirmDialog();
+                isExitAttempted = true;
+            }
+        });
+
+        // Prevent default back button behavior
+        window.addEventListener('popstate', function (event) {
+            event.preventDefault();
+            showExitConfirmDialog();
+            history.pushState(null, null, window.location.pathname);
+        });
+
+        // Add initial history state
+        history.pushState(null, null, window.location.pathname);
     </script>
 </body>
 
