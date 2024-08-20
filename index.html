@@ -188,18 +188,19 @@
         <button class="close-panel" id="closePanel">&times;</button>
         <h2 id="locationName"></h2>
         <p id="locationAddress"></p>
-        <div class="phone-container">
-            <button class="phone-button" id="phoneButton">
-                <span class="material-symbols-outlined">call</span>
-            </button>
-            <span id="locationPhone"></span>
-        </div>
         <div class="google-maps-container">
             <button class="google-maps-button" id="googleMapsButton">
                 <span class="material-symbols-outlined">map</span>
             </button>
             <span class="google-maps-text">Google Maps</span>
         </div>
+        <div class="phone-container">
+            <button class="phone-button" id="phoneButton">
+                <span class="material-symbols-outlined">call</span>
+            </button>
+            <span id="locationPhone"></span>
+        </div>
+
     </div>
     <script>
         var map = L.map('map').setView([35.6761483, 139.7855743], 12);
