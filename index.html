@@ -30,6 +30,7 @@
             z-index: 1000;
             display: flex;
             flex-direction: column;
+
         }
 
         .map-button,
@@ -46,6 +47,7 @@
             width: 40px;
             height: 40px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            color: #4285F4;
         }
 
         .map-button span,
@@ -152,6 +154,20 @@
                 'GRAD' 0,
                 'opsz' 24;
         }
+
+        .leaflet-tooltip {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+            padding: 3px 6px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .leaflet-tooltip-right:before {
+            border-right-color: rgba(255, 255, 255, 0.8);
+        }
     </style>
 </head>
 
@@ -207,48 +223,156 @@
             popupAnchor: [0, -32]
         });
 
-        var locations = [
-    {
-        name: "Kayabacho Sky Heights<br>(茅場町スカイハイツ)",
-        address: "〒104-0033 1-30 Shinkawa, Chuo-ku, Tokyo",
-        phone: "+81335537889",
-        coords: [35.6761483, 139.7855743],
-        googleMapsLink: "https://www.google.com/maps/place/Kayabacho+Sky+Heights/@35.6761701,139.7830198,898m/data=!3m2!1e3!4b1!4m6!3m5!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf?entry=ttu"
-    },
-    {
-        name: "GLOBIS University (Main Campus)<br>(グロービス経営大学院 東京校)",
-        address: "〒102-0084 Tokyo, Chiyoda City, Nibancho, 5-1 Sumitomo Fudosan Kojimachi Bldg",
-        coords: [35.6854057, 139.7343067],
-        googleMapsLink: "https://www.google.com/maps/place/Graduate+School+of+Management,+GLOBIS+University/@35.6854028,139.7354054,287m/data=!3m3!1e3!4b1!5s0x60188c637c6b9451:0xa84b8ae5bd2e0543!4m6!3m5!1s0x60188c637954c8f7:0xf45136104fe98b59!8m2!3d35.6854014!4d139.7368816!16s%2Fm%2F0bhbx0c?entry=ttu"
-    },
-    {
-        name: "GLOBIS University (Annex)",
-        address: "102-0083 Tokyo, Chiyoda City, Kojimachi, 4 Chome−2−6, Sumitomo Fudosan Kojimachi First Bldg., 10F",
-        coords: [35.6844805, 139.7359373],
-        googleMapsLink: "https://www.google.com/maps/place/Graduate+School+of+Management,+GLOBIS+University/@35.6854028,139.7354054,287m/data=!3m3!1e3!4b1!5s0x60188c637c6b9451:0xa84b8ae5bd2e0543!4m6!3m5!1s0x60188c637954c8f7:0xf45136104fe98b59!8m2!3d35.6854014!4d139.7368816!16s%2Fm%2F0bhbx0c?entry=ttu"
-    },
-    {
-        name: "Embassy of the Republic of the Philippines<br>(フィリピン共和国大使館)",
-        address: "5 Chome-15-5 Roppongi, Minato City, Tokyo 106-8537, Japan",
-        phone: "+81355621600",
-        coords: [35.6600849, 139.7329619],
-        googleMapsLink: "https://www.google.com/maps/place/Embassy+of+the+Republic+of+the+Philippines/@35.6600849,139.7329619,899m/data=!3m2!1e3!4b1!4m6!3m5!1s0x60188b79ab546613:0x4ee8940a9c1dd529!8m2!3d35.6600806!4d139.7355368!16s%2Fg%2F11fqqfg2lw?entry=ttu"
-    },
-    {
-        name: "Fukagawa Police Station Eidaibashi<br>Of Social Safety Center (深川警察署 永代橋地域安全センター)",
-        address: "1 Chome-1-19 Saga, Koto City, Tokyo 135-0031, Japan",
-        phone: "+81336410110",
-        coords: [35.676199,139.7885336],
-        googleMapsLink: "https://www.google.com/maps/place/Fukagawa+Police+Station+Eidaibashi+Of+Social+Safety+Center/@35.6766717,139.7786685,2277m/data=!3m1!1e3!4m10!1m2!2m1!1spolice+station!3m6!1s0x6018896a04595555:0x1e7f8a9d4aefa239!8m2!3d35.6762397!4d139.7886337!15sCg5wb2xpY2Ugc3RhdGlvbpIBCnBvbGljZV9ib3jgAQA!16s%2Fg%2F11cndb1pcg?entry=ttu"
-    }
-];
-
-        locations.forEach(function (loc) {
-            var marker = L.marker(loc.coords, { icon: customIcon }).addTo(map);
-            marker.on('click', function () {
-                showSlideUpPanel(loc);
-            });
+        var policeIcon = L.icon({
+            iconUrl: 'https://i.ibb.co/27Tj7h7/icons8-police-96-1.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
         });
+
+        var homeIcon = L.icon({
+            iconUrl: 'https://i.ibb.co/YLh5fnb/icons8-home-96.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+
+        var fireStationIcon = L.icon({
+            iconUrl: 'https://i.ibb.co/brrNnBB/icons8-fire-station-96.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+
+        var pharmacyIcon = L.icon({
+            iconUrl: 'https://i.ibb.co/4ftGVmD/icons8-pharmacy-96.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+
+        var clinicIcon = L.icon({
+            iconUrl: 'https://i.ibb.co/m66Y6J3/icons8-clinic-96.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+
+
+        var locations = [
+            {
+                name: "Kayabacho Sky Heights (茅場町スカイハイツ)",
+                address: "〒104-0033 1-30 Shinkawa, Chuo-ku, Tokyo",
+                phone: "+81335537889",
+                coords: [35.6761483, 139.7855743],
+                googleMapsLink: "https://www.google.com/maps/place/Kayabacho+Sky+Heights/@35.6761701,139.7830198,898m/data=!3m2!1e3!4b1!4m6!3m5!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf?entry=ttu"
+            },
+            {
+                name: "GLOBIS University (Main Campus)(グロービス経営大学院 東京校)",
+                address: "〒102-0084 Tokyo, Chiyoda City, Nibancho, 5-1 Sumitomo Fudosan Kojimachi Bldg",
+                coords: [35.6854057, 139.7343067],
+                googleMapsLink: "https://www.google.com/maps/place/Graduate+School+of+Management,+GLOBIS+University/@35.6854028,139.7354054,287m/data=!3m3!1e3!4b1!5s0x60188c637c6b9451:0xa84b8ae5bd2e0543!4m6!3m5!1s0x60188c637954c8f7:0xf45136104fe98b59!8m2!3d35.6854014!4d139.7368816!16s%2Fm%2F0bhbx0c?entry=ttu"
+            },
+            {
+                name: "GLOBIS University (Annex)",
+                address: "102-0083 Tokyo, Chiyoda City, Kojimachi, 4 Chome−2−6, Sumitomo Fudosan Kojimachi First Bldg., 10F",
+                coords: [35.6844805, 139.7359373],
+                googleMapsLink: "https://www.google.com/maps/place/Graduate+School+of+Management,+GLOBIS+University/@35.6854028,139.7354054,287m/data=!3m3!1e3!4b1!5s0x60188c637c6b9451:0xa84b8ae5bd2e0543!4m6!3m5!1s0x60188c637954c8f7:0xf45136104fe98b59!8m2!3d35.6854014!4d139.7368816!16s%2Fm%2F0bhbx0c?entry=ttu"
+            },
+            {
+                name: "Embassy of the Republic of the Philippines(フィリピン共和国大使館)",
+                address: "5 Chome-15-5 Roppongi, Minato City, Tokyo 106-8537, Japan",
+                phone: "+81355621600",
+                coords: [35.6600849, 139.7329619],
+                googleMapsLink: "https://www.google.com/maps/place/Embassy+of+the+Republic+of+the+Philippines/@35.6600849,139.7329619,899m/data=!3m2!1e3!4b1!4m6!3m5!1s0x60188b79ab546613:0x4ee8940a9c1dd529!8m2!3d35.6600806!4d139.7355368!16s%2Fg%2F11fqqfg2lw?entry=ttu"
+            },
+            {
+                name: "Fukagawa Police Station Eidaibashi Of Social Safety Center (深川警察署 永代橋地域安全センター)",
+                address: "1 Chome-1-19 Saga, Koto City, Tokyo 135-0031, Japan",
+                phone: "+81336410110",
+                coords: [35.676199, 139.7885336],
+                googleMapsLink: "https://www.google.com/maps/place/Fukagawa+Police+Station+Eidaibashi+Of+Social+Safety+Center/@35.6766717,139.7786685,2277m/data=!3m1!1e3!4m10!1m2!2m1!1spolice+station!3m6!1s0x6018896a04595555:0x1e7f8a9d4aefa239!8m2!3d35.6762397!4d139.7886337!15sCg5wb2xpY2Ugc3RhdGlvbpIBCnBvbGljZV9ib3jgAQA!16s%2Fg%2F11cndb1pcg?entry=ttu"
+            },
+            {
+                name: "Xross Office (クロスオフィス)",
+                address: "Kotobuki Building 2F 1-11-1 Kita-Shinagawa, Shinagawa-Ku, Tokyo 140-0001",
+                coords: [35.62443560644324, 139.74307929861658],
+                googleMapsLink: "https://www.google.com/maps/place/Xross+Office/@35.6244356,139.7430793,15z/data=!4m5!3m4!1s0x0:0x0!8m2!3d35.6244356!4d139.7430793"
+            },
+            {
+                name: "Chuo Police Station (警視庁 中央警察署)",
+                address: "14-2 Nihonbashikabutocho, Chuo City, Tokyo 103-0026, Japan",
+                phone: "+81356510110",
+                coords: [35.6803977, 139.7768135],
+                googleMapsLink: "https://www.google.com/maps/place/Chuo+Police+Station/@35.679903,139.7769114,315m/data=!3m1!1e3!4m6!3m5!1s0x60188959eeb1559d:0x1d10a8e0b632bbee!8m2!3d35.680382!4d139.7770641!16s%2Fg%2F120sp_5f?entry=ttu"
+            },
+            {
+                name: "Kayabacho Police Box (中央警察署 茅場町交番)",
+                address: "15-4 Nihonbashikabutocho, Chuo City, Tokyo 103-0026, Japan",
+                phone: "+81356510110",
+                coords: [35.6795722, 139.7771658],
+                googleMapsLink: "https://www.google.com/maps/place/Kayabacho+Police+Box/@35.679596,139.7771331,315m/data=!3m1!1e3!4m6!3m5!1s0x601889599aae4571:0xcd641a27165b95f0!8m2!3d35.6795536!4d139.7773218!16s%2Fg%2F1ptvvj1dm?entry=ttu"
+            },
+            {
+                name: "Takahashi Police Box (中央警察署 高橋交番)",
+                address: "2 Chome-20-2 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
+                phone: "+81356510110",
+                coords: [35.6746043, 139.7805646],
+                googleMapsLink: "https://www.google.com/maps/place/Takahashi+Police+Box/@35.6745868,139.7805981,40m/data=!3m1!1e3!4m6!3m5!1s0x6018895d753b1f21:0x2d71061f86532f8!8m2!3d35.6745734!4d139.7806592!16s%2Fg%2F12m94gm24?entry=ttu"
+            },
+            {
+                name: "Nihonbashi Fire Station (東京消防庁 日本橋消防署)",
+                address: "Japan, 〒103-0026 Tokyo, Chuo City, Nihonbashikabutocho, 14−12 東京消防庁日本橋消防署",
+                phone: "+81336660119",
+                coords: [35.6800763, 139.7774564],
+                googleMapsLink: "https://www.google.com/maps/place/Nihonbashi+Fire+Station/@35.6800487,139.7774042,72m/data=!3m1!1e3!4m6!3m5!1s0x601889598cf6052b:0x3f11a34bd87c1282!8m2!3d35.680122!4d139.777558!16s%2Fg%2F1tk8nl46?entry=ttu"
+            },
+            {
+                name: "Shinkawachozai Pharmacy (新川調剤薬局)",
+                address: "Japan, 〒104-0033 Tokyo, Chuo City, Shinkawa, 2 Chome−1−3 3F グランスクエア",
+                phone: "+81335520630",
+                coords: [35.6752868, 139.7825957],
+                googleMapsLink: "https://www.google.com/maps/place/Shinkawachozai+Pharmacy/@35.6752836,139.7784578,618m/data=!3m1!1e3!4m11!1m3!2m2!1sdrug+store!6e6!3m6!1s0x6018895d4be77a2f:0x9a18ece5759b375c!8m2!3d35.6752821!4d139.7827794!15sCgpkcnVnIHN0b3JlkgEIcGhhcm1hY3ngAQA!16s%2Fg%2F1tdl6330?entry=ttu"
+            },
+            {
+                name: "Echizenbori Drugstore",
+                address: "Japan, 〒104-0033 Tokyo, Chuo City, Shinkawa, 2 Chome−18−4 八重洲マンション",
+                coords: [35.674943939915245, 139.7818579322287],
+                googleMapsLink: "https://www.google.com/maps/place/Echizenbori+Drugstore/@35.6749361,139.7816816,48m/data=!3m2!1e3!5s0x6018895d6af353bb:0x2e8da95e87cc9e9a!4m11!1m3!2m2!1sdrug+store!6e6!3m6!1s0x60188903226d51d1:0xea7d53358b894571!8m2!3d35.6749366!4d139.781859!15sCgpkcnVnIHN0b3JlWgwiCmRydWcgc3RvcmWSAQhwaGFybWFjeZoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VSTE1uWjVibWgzUlJBQuABAA!16s%2Fg%2F11h_vxxxnh?entry=ttu"
+            },
+
+            {
+                name: "Sugi Drug Shinkawa (スギドラッグ 新川一丁目店)",
+                address: "Japan, 〒104-0033 Tokyo, Chuo City, Shinkawa, 1 Chome−17−25 東茅場町有楽ビル 1階",
+                phone: "+81362228571",
+                coords: [35.6783982, 139.7829326],
+                googleMapsLink: "https://www.google.com/maps/place/Sugi+Drug/@35.6787005,139.7803804,501m/data=!3m2!1e3!5s0x601889434ddaf677:0x560df6f2670ab706!4m10!1m2!2m1!1sdrug+store!3m6!1s0x60188943520a2099:0x60cde68dec68f405!8m2!3d35.6784129!4d139.7832299!15sCgpkcnVnIHN0b3JlkgEJZHJ1Z3N0b3Jl4AEA!16s%2Fg%2F11b5pjkf76?entry=ttu"
+            },
+            {
+                name: "Sugi Drug Hatchobori (スギドラッグ 八丁堀店)",
+                address: "Japan, 〒104-0032 Tokyo, Chuo City, Hatchobori, 1 Chome−13−10 三神ビル 1階",
+                phone: "+81352449821",
+                coords: [35.6768353, 139.7781279],
+                googleMapsLink: "https://www.google.com/maps/place/Sugi+Drug/@35.6768353,139.7781279,114m/data=!3m2!1e3!5s0x6018895c05e280b3:0x1d4eb65f1a7d9c67!4m10!1m2!2m1!1sdrug+store!3m6!1s0x6018895c042bf37f:0x222ec7d21fa3a7b6!8m2!3d35.6768228!4d139.7785865!15sCgpkcnVnIHN0b3JlkgEJZHJ1Z3N0b3Jl4AEA!16s%2Fg%2F11fxvxv_vz?entry=ttu"
+            },
+            {
+                name: "Yaesugai Medical Clinic (八重洲街診療所)",
+                address: "Japan, 〒103-0027 Tokyo, Chuo City, Nihonbashi, 2 Chome−2−20 日本橋仲通りビル 3階",
+                phone: "+81332711828",
+                coords: [35.6820984, 139.7715971],
+                googleMapsLink: "https://www.google.com/maps/place/Yaesugai+Medical+Clinic/@35.6820984,139.7715971,17z/data=!3m1!4b1!4m6!3m5!1s0x60188958723e2a03:0xcc9eb1c50d358c48!8m2!3d35.6820984!4d139.7715971!16s%2Fg%2F1tg6pq9n?entry=ttu"
+            },
+            {
+                name: "Nihonbashi Women's Clinic (日本橋ウィメンズクリニック)",
+                address: "Japan, 〒103-0027 Tokyo, Chuo City, Nihonbashi, 2 Chome−1−21 第二東洋ビル 2F",
+                phone: "+81352011555",
+                coords: [35.6827122, 139.771743],
+                googleMapsLink: "https://www.google.com/maps/place/Nihonbashi+Women's+Clinic/@35.6827122,139.771743,173m/data=!3m2!1e3!5s0x60188bfd8d2ea91f:0xe23baf251f65e9f5!4m10!1m2!2m1!1sClinic!3m6!1s0x60188bfd8d3aaaab:0x58f8a43271c3419f!8m2!3d35.6827233!4d139.7723565!15sCgZDbGluaWOSAQ5tZWRpY2FsX2NsaW5pY-ABAA!16s%2Fg%2F11cn9tq70y?entry=ttu"
+            }
+
+        ];
+
+
 
         map.fitBounds(locations.map(loc => loc.coords));
 
@@ -268,12 +392,18 @@
 
         // Home button
         document.getElementById('homeButton').addEventListener('click', function () {
-            map.setView(locations[0].coords, 19);
+            map.flyTo(locations[0].coords, 19, {
+                duration: 1.5, // Animation duration in seconds
+                easeLinearity: 0.25
+            });
         });
 
         // Center Police Station button
         document.getElementById('centerPoliceStation').addEventListener('click', function () {
-            map.setView([35.676199,139.7885336], 19);  // Center on Fukagawa Police Station
+            map.flyTo([35.6803977, 139.7768135], 19, {
+                duration: 1.5, // Animation duration in seconds
+                easeLinearity: 0.25
+            });  // Center on Chuo Police Station
         });
 
         // Slide-up panel functions
@@ -306,6 +436,58 @@
         document.getElementById('closePanel').addEventListener('click', function () {
             document.getElementById('slideUpPanel').classList.remove('active');
         });
+
+
+
+        //Markers
+        locations.forEach(function (loc) {
+            var icon;
+            if (loc.name.toLowerCase().includes('police')) {
+                icon = policeIcon;
+            } else if (loc.name.toLowerCase().includes('kayabacho sky heights')) {
+                icon = homeIcon;
+            } else if (loc.name.toLowerCase().includes('fire station')) {
+                icon = fireStationIcon;
+            } else if (loc.name.toLowerCase().includes('pharmacy') || loc.name.toLowerCase().includes('drug')) {
+                icon = pharmacyIcon;
+            } else if (loc.name.toLowerCase().includes('clinic')) {
+                icon = clinicIcon;
+            } else {
+                icon = customIcon;
+            }
+
+            var marker = L.marker(loc.coords, { icon: icon }).addTo(map);
+            marker.on('click', function () {
+                showSlideUpPanel(loc);
+            });
+
+            // Add a tooltip (label) to the marker, excluding Japanese names and adjusting position
+            var labelText = loc.name.split('(')[0].trim();
+            var tooltip = L.tooltip({
+                permanent: true,
+                direction: 'right',
+                offset: [10, -20],
+                className: 'leaflet-tooltip'
+            }).setContent(labelText);
+
+            // Function to show/hide tooltip based on zoom level
+            function updateTooltipVisibility() {
+                if (map.getZoom() >= 14) {
+                    marker.bindTooltip(tooltip);
+                    marker.openTooltip();
+                } else {
+                    marker.unbindTooltip();
+                }
+            }
+
+            // Initial visibility check
+            updateTooltipVisibility();
+
+            // Update visibility on zoom
+            map.on('zoomend', updateTooltipVisibility);
+        });
+
+
     </script>
 </body>
 
