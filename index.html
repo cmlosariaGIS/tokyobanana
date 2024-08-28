@@ -9,6 +9,12 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
+
     <style>
         body,
         html {
@@ -128,7 +134,7 @@
         }
 
         .google-maps-button {
-            background-color: #4285F4;
+            background-color: #3a3a3b;
             color: white;
             border: none;
             border-radius: 50%;
@@ -404,6 +410,14 @@
             popupAnchor: [0, -32]
         });
 
+        var trainStationIcon = L.icon({
+            iconUrl: 'https://i.ibb.co/MPWT5GS/icons8-underground-96.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+
+
 
 
 
@@ -420,7 +434,7 @@
                 name: "Embassy of the Republic of the Philippines(フィリピン共和国大使館)",
                 address: "5 Chome-15-5 Roppongi, Minato City, Tokyo 106-8537, Japan",
                 phone: "+81355621600",
-                coords: [35.6600849, 139.7329619],
+                coords: [35.660100553944325, 139.73553024372885],
                 googleMapsLink: "https://www.google.com/maps/place/Embassy+of+the+Republic+of+the+Philippines/@35.6600849,139.7329619,899m/data=!3m2!1e3!4b1!4m6!3m5!1s0x60188b79ab546613:0x4ee8940a9c1dd529!8m2!3d35.6600806!4d139.7355368!16s%2Fg%2F11fqqfg2lw?entry=ttu",
                 category: "Embassy"
             },
@@ -523,7 +537,7 @@
                 address: "1 Chome-25-12 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
                 phone: "+81335233108",
                 coords: [35.6762694, 139.7845467],
-                googleMapsLink: "https://www.google.com/maps/place/Natural+Lawson/@35.6763915,139.7844315,235m/data=!3m2!1e3!5s0x60188942f15e3e39:0xf7b97433e7a37b79!4m14!1m7!3m6!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!2sKayabacho+Sky+Heights!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf!3m5!1s0x60188942f16fb989:0xb328e91882aea49!8m2!3d35.6768144!4d139.7852001!16s%2Fg%2F1vcl3rf0?entry=ttu",
+                googleMapsLink: "https://www.google.com/maps/place/Ministop+Shinkawa+1-chome/@35.676394,139.7846398,20.07z/data=!3m1!5s0x60188942eb199a65:0xc9c5ed04e434dbb1!4m16!1m9!3m8!1s0x6018895a4bc1a715:0x62b88825472d4051!2sKayabach%C5%8D!6m1!1v5!8m2!3d35.6800914!4d139.779491!16s%2Fg%2F11h_knwppm!3m5!1s0x60188942eb16d189:0x89a8642f397ebc3c!8m2!3d35.6762333!4d139.7847066!16s%2Fg%2F1tn016gk?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
                 category: "Convenience Store"
             },
             {
@@ -694,6 +708,15 @@
             },
 
             {
+                name: "7-Eleven Chiyoda Kōjimachi 4",
+                address: "〒102-0083 Tokyo, Chiyoda City, Kojimachi, 4 Chome−５−20",
+                coords: [35.68373809631001, 139.73671852518294],
+                googleMapsLink: "https://www.google.com/maps/place/7-Eleven+Chiyoda+Ko%CC%84jimachi+4/@35.683795,139.7365811,21z/data=!3m1!5s0x60188c9ec8b7df31:0xe8f9bb3b75cbfd1e!4m6!3m5!1s0x60188c6351787ca1:0x7cbffc52d60efb6b!8m2!3d35.6837226!4d139.7367147!16s%2Fg%2F1ttdm_08?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                category: "Convenience Store"
+            },
+
+
+            {
                 name: "Ueshima Coffee House - Nibancho, Chiyoda City",
                 address: "〒102-0084 Tokyo, Chiyoda City, Nibancho, 12−3 ＣＩＲＣＬＥＳ二番町 １階",
                 coords: [35.68711308980378, 139.73620682406002],
@@ -752,25 +775,144 @@
                 category: "Cafe"
             },
 
-            //Bus stations
+            //Bus stops
 
             {
-                "name": "Eitaibashi Bus Station (Bus 22 - Tokyo Sta.Marunouchi - Kitaguch)",
+                "name": "Eitaibashi Bus Stop (Bus 22 - Tokyo StopMarunouchi - Kitaguch)",
                 "address": "1-chōme-24 Shinkawa, Chuo City, Tokyo 104-0033",
                 "coords": [35.676932205780794, 139.7852732253207],
                 "googleMapsLink": "https://www.google.com/maps/place/Eitaibashi/@35.6767029,139.7852853,20z/data=!4m8!3m7!1s0x60188942f0deaa31:0xd5ff4a438982fff0!6m1!1v5!8m2!3d35.676904!4d139.785277!16s%2Fg%2F11fmpclvwg?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
                 "phone": null,
-                "category": "Bus Station"
+                "category": "Bus Stop"
             },
 
             {
-                "name": "Eitaibashi Bus Station (Bus 22 - Kinshichō Sta.)",
+                "name": "Eitaibashi Bus Stop (Bus 22 - Kinshichō Stop)",
                 "address": "1-chōme-24 Shinkawa, Chuo City, Tokyo 104-0033",
                 "coords": [35.67718549473558, 139.78523856575518],
                 "googleMapsLink": "https://www.google.com/maps/place/Eitaibashi/@35.6769191,139.7851366,20z/data=!4m18!1m9!3m8!1s0x60188942f0deaa31:0xd5ff4a438982fff0!2sEitaibashi!6m1!1v5!8m2!3d35.676904!4d139.785277!16s%2Fg%2F11fmpclvwg!3m7!1s0x60188942fbb46691:0x4862b9a0b2e23550!6m1!1v5!8m2!3d35.67717!4d139.785242!16s%2Fg%2F11fmpclvwd?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
                 "phone": null,
-                "category": "Bus Station"
+                "category": "Bus Stop"
+            },
+
+            {
+                "name": "Kōjimachi-Yonchōme Bus Stop (Kōjimachi 4) (Bus 03, 75, 麹町ルート, 四谷ルート)",
+                "address": "1-chōme-24 Shinkawa, Chuo City, Tokyo 104-0033",
+                "coords": [35.68405068758576, 139.7369210234573],
+                "googleMapsLink": "https://www.google.com/maps/place/K%C5%8Djimachi-Yonch%C5%8Dme+(K%C5%8Djimachi+4)/@35.684024,139.7365951,20z/data=!4m8!3m7!1s0x60188c63577c0ca1:0x3486a720cde1142b!6m1!1v5!8m2!3d35.684024!4d139.736917!16s%2Fg%2F11fmpclyxt?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Bus Stop"
+            },
+
+
+            {
+                "name": "Kōjimachi-Yonchōme Bus Stop (Kōjimachi 4) (Bus 63)",
+                "address": "3 Chome Kojimachi, Chiyoda City, Tokyo 102-0083",
+                "coords": [35.6836146514039, 139.7382385419248],
+                "googleMapsLink": "https://www.google.com/maps/place/K%C5%8Djimachi-Yonch%C5%8Dme+(K%C5%8Djimachi+4)/@35.6838654,139.7374135,19.07z/data=!4m8!3m7!1s0x60188c7b49ab172b:0xa5d85d1ccce6301!6m1!1v5!8m2!3d35.68357!4d139.738232!16s%2Fg%2F11hzm0_fxc?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Bus Stop"
+            },
+
+            {
+                "name": "Kayabachō Bus Stp (Bus 22)",
+                "address": "1-chōme-13 Nihonbashikayabachō, Chuo City, Tokyo 103-0025",
+                "coords": [35.679755646369735, 139.78079606118666],
+                "googleMapsLink": "https://www.google.com/maps/place/Kayabach%C5%8D/@35.6796022,139.7805992,20.41z/data=!4m8!3m7!1s0x6018895a1f2cf2bd:0x49502dc3be8ff944!6m1!1v5!8m2!3d35.6797412!4d139.7807944!16s%2Fg%2F11h45g1vj1?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Bus Stop"
+            },
+
+            {
+                "name": "Kayabachō Bus Stop (Bus 22)",
+                "address": "9, Chuo City, Tokyo 103-0025",
+                "coords": [35.68012678395946, 139.77949609910672],
+                "googleMapsLink": "https://www.google.com/maps/place/Kayabach%C5%8D/@35.680038,139.77902,20z/data=!4m8!3m7!1s0x6018895a4bc1a715:0x62b88825472d4051!6m1!1v5!8m2!3d35.6800914!4d139.779491!16s%2Fg%2F11h_knwppm?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Bus Stop"
+            },
+
+
+            //Train stations
+
+            {
+                "name": "Kojimachi Sta. (Yurakucho Line)",
+                "address": "3 Chome-2先 Kojimachi, Chiyoda City, Tokyo 102-0083",
+                "coords": [35.6847499721179, 139.73733545876712],
+                "googleMapsLink": "https://www.google.com/maps/place/Kojimachi+Station/@35.6847406,139.7368562,19.59z/data=!4m18!1m9!3m8!1s0x60188c7ad8b67b87:0x4c9861eac48e98cf!2sKojimachi+Station!6m1!1v2!8m2!3d35.6847194!4d139.7373252!16s%2Fm%2F02vmjcs!3m7!1s0x60188c7ad8b67b87:0x4c9861eac48e98cf!6m1!1v2!8m2!3d35.6847194!4d139.7373252!16s%2Fm%2F02vmjcs?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Train Station"
+            },
+
+            {
+                "name": "Hanzomon Sta. (Hanzomon Line)",
+                "address": "1 Chome-6先 Kojimachi, Chiyoda City, Tokyo 102-0083",
+                "coords": [35.68568077089111, 139.74164230445885],
+                "googleMapsLink": "https://www.google.com/maps/place/Hanzomon+Station/@35.6856268,139.7413765,20.49z/data=!4m8!3m7!1s0x60188c6551ec84eb:0xe17bf5a55e838157!6m1!1v2!8m2!3d35.6856667!4d139.7416475!16zL20vMGRyeHpi?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Train Station"
+            },
+
+
+            {
+                "name": "Kayabachō Sta. (Hibiya Line, Tozai Line)",
+                "address": "1-chōme-11 Nihonbashikayabachō, Chuo City, Tokyo 103-0025",
+                "coords": [35.67996958513028, 139.78016027482644],
+                "googleMapsLink": "https://www.google.com/maps/place/Kayabach%C5%8D+Stop/@35.6798238,139.7801668,20.7z/data=!4m8!3m7!1s0x6018895bae6c2a8d:0x7c332c5bb0c2cd92!6m1!1v2!8m2!3d35.6799355!4d139.7801631!16s%2Fm%2F043mtkh?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Train Station"
+            },
+
+            {
+                "name": "Suitengumae Sta. (Hanzomon Line)",
+                "address": "2 Chome-1-1 Nihonbashikakigaracho, Chuo City, Tokyo 103-0014",
+                "coords": [35.68300462155375, 139.7851565618083],
+                "googleMapsLink": "https://www.google.com/maps/place/Suitengumae+Stop/@35.6828627,139.784795,20.13z/data=!4m8!3m7!1s0x6018894450d8d7a9:0x92f0f935c94b5461!6m1!1v2!8m2!3d35.68299!4d139.785153!16s%2Fm%2F02y_f3f?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Train Station"
+            },
+
+            {
+                "name": "Hatchōbori Sta. (Hibiya Line, Keiyo Line)",
+                "address": "3 Chome Hatchobori, Chuo City, Tokyo 104-0032",
+                "coords": [35.67463663262277, 139.77688447834072],
+                "googleMapsLink": "https://www.google.com/maps/place/Hatch%C5%8Dbori+Station/@35.6751955,139.7760801,18.57z/data=!4m8!3m7!1s0x6018895e7e295c3b:0xb246a5ed9843db8c!6m1!1v2!8m2!3d35.6746248!4d139.7768846!16s%2Fm%2F027fh9z?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Train Station"
+            },
+
+            {
+                "name": "Azabu-Juban Sta. (Namboku Line, Oedo Line)",
+                "address": "〒106-0045 Tokyo, 港区麻布十番１丁目４−６",
+                "coords": [35.656424149718575, 139.73660569526314],
+                "googleMapsLink": "https://www.google.com/maps/place/Hatch%C5%8Dbori+Station/@35.6751955,139.7760801,18.57z/data=!4m8!3m7!1s0x6018895e7e295c3b:0xb246a5ed9843db8c!6m1!1v2!8m2!3d35.6746248!4d139.7768846!16s%2Fm%2F027fh9z?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Train Station"
+            },
+
+            {
+                "name": "Takadanobaba Sta.(Yamanote Line, Tozai Line, Seibu-Shinjuku Line, Shinjuku Line)",
+                "address": "1 Chome-35-2 Takadanobaba, Shinjuku City, Tokyo 169-0075",
+                "coords": [35.7125916617731, 139.7038587469298],
+                "googleMapsLink": "https://www.google.com/maps/place/Takadanobaba+Station/@35.7125701,139.7036654,20.25z/data=!4m16!1m7!3m6!1s0x60188d399ddaa763:0x954afc3e292c9a7e!2sTakadanobaba+Station!8m2!3d35.7125654!4d139.7038615!16zL20vMDJyazgx!3m7!1s0x60188d399ddaa763:0x954afc3e292c9a7e!6m1!1v2!8m2!3d35.7125654!4d139.7038615!16zL20vMDJyazgx?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Train Station"
+            },
+
+            {
+                "name": "Shinjuku Sta.(Yamanote Line, Shinjuku Line etc.)",
+                "address": "3 Chome-38-1 Shinjuku, Shinjuku City, Tokyo 160-0022",
+                "coords": [35.68967646554617, 139.70058514221614],
+                "googleMapsLink": "https://www.google.com/maps/place/Shinjuku+Station/@35.6893209,139.6996091,18.48z/data=!4m16!1m7!3m6!1s0x60188cd0d6b1ba1f:0x1c32a1f1ecacfdd5!2sShinjuku+Station!8m2!3d35.6896067!4d139.7005713!16zL20vMDIxdnow!3m7!1s0x60188cd0d6b1ba1f:0x1c32a1f1ecacfdd5!6m1!1v2!8m2!3d35.6896067!4d139.7005713!16zL20vMDIxdnow?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Train Station"
             }
+
+
+
+
+
+
 
 
 
@@ -942,8 +1084,10 @@
                     return restaurantIcon;
                 case "Cafe":
                     return cafeIcon;
-                case "Bus Station":
+                case "Bus Stop":
                     return busStationIcon;
+                case "Train Station":
+                    return trainStationIcon;
                 case "Education":
                 case "Embassy":
                 case "Office":
@@ -1168,6 +1312,137 @@
 
         // Add initial history state
         history.pushState(null, null, window.location.pathname);
+
+
+
+
+
+
+
+
+
+
+
+       // GeoJSON data for all lines
+var geojsonData = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { 
+        "routeName": "Route 1",
+        "message": "Take Bus No.22 to go Home",
+        "scheduleUrl": "https://www.google.com/maps/place/Kayabach%C5%8D/@35.6795259,139.7799805,18.82z/data=!4m18!1m9!3m8!1s0x60188942f0deaa31:0xd5ff4a438982fff0!2sEitaibashi!6m1!1v5!8m2!3d35.676904!4d139.785277!16s%2Fg%2F11fmpclvwg!3m7!1s0x6018895a1f2cf2bd:0x49502dc3be8ff944!6m1!1v5!8m2!3d35.6797412!4d139.7807944!16s%2Fg%2F11h45g1vj1?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
+      },
+      "geometry": {
+        "coordinates": [
+          [139.78087688650572, 35.67965677408658],
+          [139.7816992057596, 35.679214127108054],
+          [139.78249026209397, 35.67873505976097],
+          [139.7829448658677, 35.67845464748919],
+          [139.78340190067712, 35.678168309997034],
+          [139.78416639105762, 35.67769343986747],
+          [139.78520699816306, 35.67710948411016]
+        ],
+        "type": "LineString"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { 
+        "routeName": "Route 2",
+        "message": "Take Bus 22 to Kayabacho Train Station",
+        "scheduleUrl": "https://www.google.com/maps/place/Eitaibashi/@35.6768616,139.7852704,20.38z/data=!4m18!1m9!3m8!1s0x6018895a4bc1a715:0x62b88825472d4051!2sKayabach%C5%8D!6m1!1v5!8m2!3d35.6800914!4d139.779491!16s%2Fg%2F11h_knwppm!3m7!1s0x60188942f0deaa31:0xd5ff4a438982fff0!6m1!1v5!8m2!3d35.676904!4d139.785277!16s%2Fg%2F11fmpclvwg?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
+      },
+      "geometry": {
+        "coordinates": [
+          [139.7852398112339, 35.67696977623265],
+          [139.7846423741829, 35.67730054472847],
+          [139.78375790033414, 35.6778156732631],
+          [139.78267280148322, 35.678477793190794],
+          [139.78201528696104, 35.678892601362676],
+          [139.78091052876778, 35.67948363161402],
+          [139.78030307880528, 35.679811678564434],
+          [139.77948869519457, 35.680128880057964]
+        ],
+        "type": "LineString"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "routeName": "Route 3",
+        "message": "From Kayabacho Station, <b>enter via 4b (stairs)</b>, find and go to <b>Platform 4</b>, to take the <b><span style='color: teal;'><i class='fi fi-sr-circle-t'></i> Tozai Line</span></b> to go to <b>Takadanobaba Station</b> (get off here <b>to transfer to Yamanote Line</b>)<p><b>8 Stops</b><p>Kayabacho Sta. (Start) <i class='fi fi-rr-arrow-alt-circle-right'></i> Nihombashi Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Otemachi Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Takebashi Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Kudanshita Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Iidabashi Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Kagurazaka Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Waseda Sta. <b><i class='fi fi-rr-arrow-alt-circle-right'></i> Takadanobaba Sta. (Destination)</b>",
+        "scheduleUrl": "https://www.google.com/maps/dir/35.6767197,139.7864643/Shinjuku+Station,+3+Chome-38-1+Shinjuku,+Shinjuku+City,+Tokyo+160-0022/@35.6917995,139.702744,13.19z/am=t/data=!4m11!4m10!1m1!4e1!1m5!1m1!1s0x60188cd0d6b1ba1f:0x1c32a1f1ecacfdd5!2m2!1d139.7005713!2d35.6896067!3e3!5i4?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
+      },
+      "geometry": {
+        "coordinates": [
+          [139.78037739582516, 35.679882003486185],
+          [139.703868247145, 35.71305036346931]
+        ],
+        "type": "LineString"
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "routeName": "Route 4",
+        "message": "Walk and follow signs for <b>JR line</b>, <b>Seibu-Shinjuku Line District Gate</b><p>Transfer to <b><span style='color: #73c11d;'><i class='fi fi-sr-circle-y'></i> Yamanote Line</span></b> via <b>Platform 2</b>. Local for Shinjuku / Shibuya (Counter-Clockwise)<p><b>2 Stops</b><p>Shin-Okubo Station <i class='fi fi-rr-arrow-alt-circle-right'></i> <b>Shinjuku Station (Final Destination)</b>",
+        "scheduleUrl": "https://www.google.com/maps/dir/Takadanobaba+Station,+Japan/Shinjuku+Station,+3+Chome-38-1+Shinjuku,+Shinjuku+City,+Tokyo+160-0022/@35.7017615,139.6958523,15z/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x60188d1dc045eb3d:0x7c6945dfdf346295!2m2!1d139.7038236!2d35.7131308!1m5!1m1!1s0x60188cd0d6b1ba1f:0x1c32a1f1ecacfdd5!2m2!1d139.7005713!2d35.6896067!3e3?entry=ttu"
+      },
+      "geometry": {
+        "coordinates": [
+          [139.70376932431623, 35.71228821200715],
+          [139.70070968763213, 35.70423200498122],
+          [139.69995726207588, 35.695410957582155],
+          [139.70023896781208, 35.69114279480881]
+        ],
+        "type": "LineString"
+      }
+    }
+  ]
+};
+
+// Add GeoJSON layer to the map with thicker lines and different colors
+var geojsonLayer = L.geoJSON(geojsonData, {
+  style: function (feature) {
+    switch (feature.properties.routeName) {
+      case 'Route 1': return {color: '#007bff', weight: 5};
+      case 'Route 2': return {color: '#28a745', weight: 5};
+      case 'Route 3': return {color: 'teal', weight: 5};
+      case 'Route 4': return {color: '#73c11d', weight: 5};
+    }
+  },
+  onEachFeature: function (feature, layer) {
+    layer.on('click', function () {
+      var popupContent = `<br>${feature.properties.message}<br><br>`;
+      popupContent += `<button style="display: flex; align-items: center; background-color: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 20px; cursor: pointer;" onclick="window.open('${feature.properties.scheduleUrl}', '_blank')">`;
+      popupContent += `<span class="material-icons" style="margin-right: 5px;">schedule</span>`;
+      popupContent += feature.properties.routeName === 'Route 1' || feature.properties.routeName === 'Route 2' ? 'See Bus Schedule' : 'See Train Schedule';
+      popupContent += `</button>`;
+      
+      layer.bindPopup(popupContent).openPopup();
+    });
+  }
+});
+
+// Add the layer to the map only if zoom level is 15 or higher
+map.on('zoomend', function () {
+  if (map.getZoom() >= 15) {
+    if (!map.hasLayer(geojsonLayer)) {
+      map.addLayer(geojsonLayer);
+    }
+  } else {
+    if (map.hasLayer(geojsonLayer)) {
+      map.removeLayer(geojsonLayer);
+    }
+  }
+});
+
+// Initial check to add the layer if the map starts at zoom level 15 or higher
+if (map.getZoom() >= 15) {
+  map.addLayer(geojsonLayer);
+}
     </script>
 </body>
 
