@@ -332,6 +332,8 @@
 
         cartoDB.addTo(map);
 
+
+        //Markers related
         var customIcon = L.icon({
             iconUrl: 'https://i.ibb.co/bWhk7NN/gps-shadow.png',
             iconSize: [32, 32],
@@ -388,6 +390,22 @@
             popupAnchor: [0, -32]
         });
 
+        var cafeIcon = L.icon({
+            iconUrl: 'https://i.ibb.co/t2xJcyk/coffee-cup-2.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+
+        var busStationIcon = L.icon({
+            iconUrl: 'https://i.ibb.co/ch5CY6w/icons8-bus-stop-96.png',
+            iconSize: [32, 32],
+            iconAnchor: [16, 32],
+            popupAnchor: [0, -32]
+        });
+
+
+
 
         var locations = [
             {
@@ -397,187 +415,382 @@
                 coords: [35.6761483, 139.7855743],
                 googleMapsLink: "https://www.google.com/maps/place/Kayabacho+Sky+Heights/@35.6761701,139.7830198,898m/data=!3m2!1e3!4b1!4m6!3m5!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf?entry=ttu"
             },
-            {
-                name: "GLOBIS University (Main Campus)(グロービス経営大学院 東京校)",
-                address: "〒102-0084 Tokyo, Chiyoda City, Nibancho, 5-1 Sumitomo Fudosan Kojimachi Bldg",
-                coords: [35.6854057, 139.7343067],
-                googleMapsLink: "https://www.google.com/maps/place/Graduate+School+of+Management,+GLOBIS+University/@35.6854028,139.7354054,287m/data=!3m3!1e3!4b1!5s0x60188c637c6b9451:0xa84b8ae5bd2e0543!4m6!3m5!1s0x60188c637954c8f7:0xf45136104fe98b59!8m2!3d35.6854014!4d139.7368816!16s%2Fm%2F0bhbx0c?entry=ttu"
-            },
-            {
-                name: "GLOBIS University (Annex)",
-                address: "102-0083 Tokyo, Chiyoda City, Kojimachi, 4 Chome−2−6, Sumitomo Fudosan Kojimachi First Bldg., 10F",
-                coords: [35.6844805, 139.7359373],
-                googleMapsLink: "https://www.google.com/maps/place/Graduate+School+of+Management,+GLOBIS+University/@35.6854028,139.7354054,287m/data=!3m3!1e3!4b1!5s0x60188c637c6b9451:0xa84b8ae5bd2e0543!4m6!3m5!1s0x60188c637954c8f7:0xf45136104fe98b59!8m2!3d35.6854014!4d139.7368816!16s%2Fm%2F0bhbx0c?entry=ttu"
-            },
+
             {
                 name: "Embassy of the Republic of the Philippines(フィリピン共和国大使館)",
                 address: "5 Chome-15-5 Roppongi, Minato City, Tokyo 106-8537, Japan",
                 phone: "+81355621600",
                 coords: [35.6600849, 139.7329619],
-                googleMapsLink: "https://www.google.com/maps/place/Embassy+of+the+Republic+of+the+Philippines/@35.6600849,139.7329619,899m/data=!3m2!1e3!4b1!4m6!3m5!1s0x60188b79ab546613:0x4ee8940a9c1dd529!8m2!3d35.6600806!4d139.7355368!16s%2Fg%2F11fqqfg2lw?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Embassy+of+the+Republic+of+the+Philippines/@35.6600849,139.7329619,899m/data=!3m2!1e3!4b1!4m6!3m5!1s0x60188b79ab546613:0x4ee8940a9c1dd529!8m2!3d35.6600806!4d139.7355368!16s%2Fg%2F11fqqfg2lw?entry=ttu",
+                category: "Embassy"
             },
             {
                 name: "Fukagawa Police Station Eidaibashi Of Social Safety Center (深川警察署 永代橋地域安全センター)",
                 address: "1 Chome-1-19 Saga, Koto City, Tokyo 135-0031, Japan",
                 phone: "+81336410110",
                 coords: [35.676199, 139.7885336],
-                googleMapsLink: "https://www.google.com/maps/place/Fukagawa+Police+Station+Eidaibashi+Of+Social+Safety+Center/@35.6766717,139.7786685,2277m/data=!3m1!1e3!4m10!1m2!2m1!1spolice+station!3m6!1s0x6018896a04595555:0x1e7f8a9d4aefa239!8m2!3d35.6762397!4d139.7886337!15sCg5wb2xpY2Ugc3RhdGlvbpIBCnBvbGljZV9ib3jgAQA!16s%2Fg%2F11cndb1pcg?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Fukagawa+Police+Station+Eidaibashi+Of+Social+Safety+Center/@35.6766717,139.7786685,2277m/data=!3m1!1e3!4m10!1m2!2m1!1spolice+station!3m6!1s0x6018896a04595555:0x1e7f8a9d4aefa239!8m2!3d35.6762397!4d139.7886337!15sCg5wb2xpY2Ugc3RhdGlvbpIBCnBvbGljZV9ib3jgAQA!16s%2Fg%2F11cndb1pcg?entry=ttu",
+                category: "Police"
             },
             {
                 name: "Xross Office (クロスオフィス)",
                 address: "Kotobuki Building 2F 1-11-1 Kita-Shinagawa, Shinagawa-Ku, Tokyo 140-0001",
                 coords: [35.62443560644324, 139.74307929861658],
-                googleMapsLink: "https://www.google.com/maps/place/Xross+Office/@35.6244356,139.7430793,15z/data=!4m5!3m4!1s0x0:0x0!8m2!3d35.6244356!4d139.7430793"
+                googleMapsLink: "https://www.google.com/maps/place/Xross+Office/@35.6244356,139.7430793,15z/data=!4m5!3m4!1s0x0:0x0!8m2!3d35.6244356!4d139.7430793",
+                category: "Office"
             },
             {
                 name: "Chuo Police Station (警視庁 中央警察署)",
                 address: "14-2 Nihonbashikabutocho, Chuo City, Tokyo 103-0026, Japan",
                 phone: "+81356510110",
                 coords: [35.6803977, 139.7768135],
-                googleMapsLink: "https://www.google.com/maps/place/Chuo+Police+Station/@35.679903,139.7769114,315m/data=!3m1!1e3!4m6!3m5!1s0x60188959eeb1559d:0x1d10a8e0b632bbee!8m2!3d35.680382!4d139.7770641!16s%2Fg%2F120sp_5f?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Chuo+Police+Station/@35.679903,139.7769114,315m/data=!3m1!1e3!4m6!3m5!1s0x60188959eeb1559d:0x1d10a8e0b632bbee!8m2!3d35.680382!4d139.7770641!16s%2Fg%2F120sp_5f?entry=ttu",
+                category: "Police"
             },
             {
                 name: "Kayabacho Police Box (中央警察署 茅場町交番)",
                 address: "15-4 Nihonbashikabutocho, Chuo City, Tokyo 103-0026, Japan",
                 phone: "+81356510110",
                 coords: [35.6795722, 139.7771658],
-                googleMapsLink: "https://www.google.com/maps/place/Kayabacho+Police+Box/@35.679596,139.7771331,315m/data=!3m1!1e3!4m6!3m5!1s0x601889599aae4571:0xcd641a27165b95f0!8m2!3d35.6795536!4d139.7773218!16s%2Fg%2F1ptvvj1dm?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Kayabacho+Police+Box/@35.679596,139.7771331,315m/data=!3m1!1e3!4m6!3m5!1s0x601889599aae4571:0xcd641a27165b95f0!8m2!3d35.6795536!4d139.7773218!16s%2Fg%2F1ptvvj1dm?entry=ttu",
+                category: "Police"
             },
             {
                 name: "Takahashi Police Box (中央警察署 高橋交番)",
                 address: "2 Chome-20-2 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
                 phone: "+81356510110",
                 coords: [35.6746043, 139.7805646],
-                googleMapsLink: "https://www.google.com/maps/place/Takahashi+Police+Box/@35.6745868,139.7805981,40m/data=!3m1!1e3!4m6!3m5!1s0x6018895d753b1f21:0x2d71061f86532f8!8m2!3d35.6745734!4d139.7806592!16s%2Fg%2F12m94gm24?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Takahashi+Police+Box/@35.6745868,139.7805981,40m/data=!3m1!1e3!4m6!3m5!1s0x6018895d753b1f21:0x2d71061f86532f8!8m2!3d35.6745734!4d139.7806592!16s%2Fg%2F12m94gm24?entry=ttu",
+                category: "Police"
             },
             {
                 name: "Nihonbashi Fire Station (東京消防庁 日本橋消防署)",
                 address: "Japan, 〒103-0026 Tokyo, Chuo City, Nihonbashikabutocho, 14−12 東京消防庁日本橋消防署",
                 phone: "+81336660119",
                 coords: [35.6800763, 139.7774564],
-                googleMapsLink: "https://www.google.com/maps/place/Nihonbashi+Fire+Station/@35.6800487,139.7774042,72m/data=!3m1!1e3!4m6!3m5!1s0x601889598cf6052b:0x3f11a34bd87c1282!8m2!3d35.680122!4d139.777558!16s%2Fg%2F1tk8nl46?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Nihonbashi+Fire+Station/@35.6800487,139.7774042,72m/data=!3m1!1e3!4m6!3m5!1s0x601889598cf6052b:0x3f11a34bd87c1282!8m2!3d35.680122!4d139.777558!16s%2Fg%2F1tk8nl46?entry=ttu",
+                category: "Fire Station"
             },
             {
                 name: "Shinkawachozai Pharmacy (新川調剤薬局)",
                 address: "Japan, 〒104-0033 Tokyo, Chuo City, Shinkawa, 2 Chome−1−3 3F グランスクエア",
                 phone: "+81335520630",
                 coords: [35.6752868, 139.7825957],
-                googleMapsLink: "https://www.google.com/maps/place/Shinkawachozai+Pharmacy/@35.6752836,139.7784578,618m/data=!3m1!1e3!4m11!1m3!2m2!1sdrug+store!6e6!3m6!1s0x6018895d4be77a2f:0x9a18ece5759b375c!8m2!3d35.6752821!4d139.7827794!15sCgpkcnVnIHN0b3JlkgEIcGhhcm1hY3ngAQA!16s%2Fg%2F1tdl6330?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Shinkawachozai+Pharmacy/@35.6752836,139.7784578,618m/data=!3m1!1e3!4m11!1m3!2m2!1sdrug+store!6e6!3m6!1s0x6018895d4be77a2f:0x9a18ece5759b375c!8m2!3d35.6752821!4d139.7827794!15sCgpkcnVnIHN0b3JlkgEIcGhhcm1hY3ngAQA!16s%2Fg%2F1tdl6330?entry=ttu",
+                category: "Pharmacy"
             },
             {
                 name: "Echizenbori Drugstore",
                 address: "Japan, 〒104-0033 Tokyo, Chuo City, Shinkawa, 2 Chome−18−4 八重洲マンション",
                 coords: [35.674943939915245, 139.7818579322287],
-                googleMapsLink: "https://www.google.com/maps/place/Echizenbori+Drugstore/@35.6749361,139.7816816,48m/data=!3m2!1e3!5s0x6018895d6af353bb:0x2e8da95e87cc9e9a!4m11!1m3!2m2!1sdrug+store!6e6!3m6!1s0x60188903226d51d1:0xea7d53358b894571!8m2!3d35.6749366!4d139.781859!15sCgpkcnVnIHN0b3JlWgwiCmRydWcgc3RvcmWSAQhwaGFybWFjeZoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VSTE1uWjVibWgzUlJBQuABAA!16s%2Fg%2F11h_vxxxnh?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Echizenbori+Drugstore/@35.6749361,139.7816816,48m/data=!3m2!1e3!5s0x6018895d6af353bb:0x2e8da95e87cc9e9a!4m11!1m3!2m1!1sdrug+store!6e6!3m6!1s0x60188903226d51d1:0xea7d53358b894571!8m2!3d35.6749366!4d139.781859!15sCgpkcnVnIHN0b3JlWgwiCmRydWcgc3RvcmWSAQhwaGFybWFjeZoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VSTE1uWjVibWgzUlJBQuABAA!16s%2Fg%2F11h_vxxxnh?entry=ttu",
+                category: "Pharmacy"
             },
-
             {
                 name: "Sugi Drug Shinkawa (スギドラッグ 新川一丁目店)",
                 address: "Japan, 〒104-0033 Tokyo, Chuo City, Shinkawa, 1 Chome−17−25 東茅場町有楽ビル 1階",
                 phone: "+81362228571",
                 coords: [35.6783982, 139.7829326],
-                googleMapsLink: "https://www.google.com/maps/place/Sugi+Drug/@35.6787005,139.7803804,501m/data=!3m2!1e3!5s0x601889434ddaf677:0x560df6f2670ab706!4m10!1m2!2m1!1sdrug+store!3m6!1s0x60188943520a2099:0x60cde68dec68f405!8m2!3d35.6784129!4d139.7832299!15sCgpkcnVnIHN0b3JlkgEJZHJ1Z3N0b3Jl4AEA!16s%2Fg%2F11b5pjkf76?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Sugi+Drug/@35.6787005,139.7803804,501m/data=!3m2!1e3!5s0x601889434ddaf677:0x560df6f2670ab706!4m10!1m2!2m1!1sdrug+store!3m6!1s0x60188943520a2099:0x60cde68dec68f405!8m2!3d35.6784129!4d139.7832299!15sCgpkcnVnIHN0b3JlkgEJZHJ1Z3N0b3Jl4AEA!16s%2Fg%2F11b5pjkf76?entry=ttu",
+                category: "Pharmacy"
             },
             {
                 name: "Sugi Drug Hatchobori (スギドラッグ 八丁堀店)",
                 address: "Japan, 〒104-0032 Tokyo, Chuo City, Hatchobori, 1 Chome−13−10 三神ビル 1階",
                 phone: "+81352449821",
                 coords: [35.6768353, 139.7781279],
-                googleMapsLink: "https://www.google.com/maps/place/Sugi+Drug/@35.6768353,139.7781279,114m/data=!3m2!1e3!5s0x6018895c05e280b3:0x1d4eb65f1a7d9c67!4m10!1m2!2m1!1sdrug+store!3m6!1s0x6018895c042bf37f:0x222ec7d21fa3a7b6!8m2!3d35.6768228!4d139.7785865!15sCgpkcnVnIHN0b3JlkgEJZHJ1Z3N0b3Jl4AEA!16s%2Fg%2F11fxvxv_vz?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Sugi+Drug/@35.6768353,139.7781279,114m/data=!3m2!1e3!5s0x6018895c05e280b3:0x1d4eb65f1a7d9c67!4m10!1m2!2m1!1sdrug+store!3m6!1s0x6018895c042bf37f:0x222ec7d21fa3a7b6!8m2!3d35.6768228!4d139.7785865!15sCgpkcnVnIHN0b3JlkgEJZHJ1Z3N0b3Jl4AEA!16s%2Fg%2F11fxvxv_vz?entry=ttu",
+                category: "Pharmacy"
             },
             {
                 name: "Yaesugai Medical Clinic (八重洲街診療所)",
                 address: "Japan, 〒103-0027 Tokyo, Chuo City, Nihonbashi, 2 Chome−2−20 日本橋仲通りビル 3階",
                 phone: "+81332711828",
                 coords: [35.6820984, 139.7715971],
-                googleMapsLink: "https://www.google.com/maps/place/Yaesugai+Medical+Clinic/@35.6820984,139.7715971,17z/data=!3m1!4b1!4m6!3m5!1s0x60188958723e2a03:0xcc9eb1c50d358c48!8m2!3d35.6820984!4d139.7715971!16s%2Fg%2F1tg6pq9n?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Yaesugai+Medical+Clinic/@35.6820984,139.7715971,17z/data=!3m1!4b1!4m6!3m5!1s0x60188958723e2a03:0xcc9eb1c50d358c48!8m2!3d35.6820984!4d139.7715971!16s%2Fg%2F1tg6pq9n?entry=ttu",
+                category: "Clinic"
             },
             {
                 name: "Nihonbashi Women's Clinic (日本橋ウィメンズクリニック)",
                 address: "Japan, 〒103-0027 Tokyo, Chuo City, Nihonbashi, 2 Chome−1−21 第二東洋ビル 2F",
                 phone: "+81352011555",
                 coords: [35.6827122, 139.771743],
-                googleMapsLink: "https://www.google.com/maps/place/Nihonbashi+Women's+Clinic/@35.6827122,139.771743,173m/data=!3m2!1e3!5s0x60188bfd8d2ea91f:0xe23baf251f65e9f5!4m10!1m2!2m1!1sClinic!3m6!1s0x60188bfd8d3aaaab:0x58f8a43271c3419f!8m2!3d35.6827233!4d139.7723565!15sCgZDbGluaWOSAQ5tZWRpY2FsX2NsaW5pY-ABAA!16s%2Fg%2F11cn9tq70y?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Nihonbashi+Women's+Clinic/@35.6827122,139.771743,173m/data=!3m2!1e3!5s0x60188bfd8d2ea91f:0xe23baf251f65e9f5!4m10!1m2!2m1!1sClinic!3m6!1s0x60188bfd8d3aaaab:0x58f8a43271c3419f!8m2!3d35.6827233!4d139.7723565!15sCgZDbGluaWOSAQ5tZWRpY2FsX2NsaW5pY-ABAA!16s%2Fg%2F11cn9tq70y?entry=ttu",
+                category: "Clinic"
             },
             {
                 name: "Ministop Shinkawa 1-chome (ミニストップ 新川１丁目店)",
                 address: "1 Chome-25-12 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
                 phone: "+81335233108",
                 coords: [35.6762694, 139.7845467],
-                googleMapsLink: "https://www.google.com/maps/place/Natural+Lawson/@35.6763915,139.7844315,235m/data=!3m2!1e3!5s0x60188942f15e3e39:0xf7b97433e7a37b79!4m14!1m7!3m6!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!2sKayabacho+Sky+Heights!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf!3m5!1s0x60188942f16fb989:0xb328e91882aea49!8m2!3d35.6768144!4d139.7852001!16s%2Fg%2F1vcl3rf0?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Natural+Lawson/@35.6763915,139.7844315,235m/data=!3m2!1e3!5s0x60188942f15e3e39:0xf7b97433e7a37b79!4m14!1m7!3m6!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!2sKayabacho+Sky+Heights!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf!3m5!1s0x60188942f16fb989:0xb328e91882aea49!8m2!3d35.6768144!4d139.7852001!16s%2Fg%2F1vcl3rf0?entry=ttu",
+                category: "Convenience Store"
             },
             {
                 name: "Natural Lawson (ナチュラルローソン 新川一丁目店)",
                 address: "1 Chome-24-1 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
                 phone: "+81335235430",
                 coords: [35.6768123, 139.7849786],
-                googleMapsLink: "https://www.google.com/maps/place/Natural+Lawson/@35.6763915,139.7844315,235m/data=!3m2!1e3!5s0x60188942f15e3e39:0xf7b97433e7a37b79!4m14!1m7!3m6!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!2sKayabacho+Sky+Heights!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf!3m5!1s0x60188942f16fb989:0xb328e91882aea49!8m2!3d35.6768144!4d139.7852001!16s%2Fg%2F1vcl3rf0?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Natural+Lawson/@35.6763915,139.7844315,235m/data=!3m2!1e3!5s0x60188942f15e3e39:0xf7b97433e7a37b79!4m14!1m7!3m6!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!2sKayabacho+Sky+Heights!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf!3m5!1s0x60188942f16fb989:0xb328e91882aea49!8m2!3d35.6768144!4d139.7852001!16s%2Fg%2F1vcl3rf0?entry=ttu",
+                category: "Convenience Store"
             },
             {
                 name: "7-Eleven (セブン-イレブン 中央区新川１丁目店)",
                 address: "1 Chome-21-5 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
                 phone: "+81335555868",
                 coords: [35.6769623, 139.7856929],
-                googleMapsLink: "https://www.google.com/maps/place/7-Eleven/@35.6769623,139.7856929,126m/data=!3m2!1e3!5s0x6018893bf7a3d399:0x3e99d29720846fdf!4m14!1m7!3m6!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!2sKayabacho+Sky+Heights!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf!3m5!1s0x601889425eafe3e7:0x13c48c91302bec94!8m2!3d35.6769323!4d139.7859845!16s%2Fg%2F1tjjpbrg?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/7-Eleven/@35.6769623,139.7856929,126m/data=!3m2!1e3!5s0x6018893bf7a3d399:0x3e99d29720846fdf!4m14!1m7!3m6!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!2sKayabacho+Sky+Heights!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf!3m5!1s0x601889425eafe3e7:0x13c48c91302bec94!8m2!3d35.6769323!4d139.7859845!16s%2Fg%2F1tjjpbrg?entry=ttu",
+                category: "Convenience Store"
             },
-
             {
                 name: "Tsukemen Sumida (つけ麺隅田 新川店)",
                 address: "1 Chome-31-4 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
                 phone: "+81355409711",
                 coords: [35.6758793, 139.7861668],
-                googleMapsLink: "https://www.google.com/maps/place/Tsukemen+Sumida/@35.6758793,139.7861668,17z/data=!3m1!4b1!4m6!3m5!1s0x601889425f9134c1:0x6f615321c30f97fc!8m2!3d35.6758793!4d139.7861668!16s%2Fg%2F1tg6vkm2"
+                googleMapsLink: "https://www.google.com/maps/place/Tsukemen+Sumida/@35.6758793,139.7861668,17z/data=!3m1!4b1!4m6!3m5!1s0x601889425f9134c1:0x6f615321c30f97fc!8m2!3d35.6758793!4d139.7861668!16s%2Fg%2F1tg6vkm2",
+                category: "Restaurant"
             },
             {
                 name: "Yoshino",
                 address: "2 Chome-15-2 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
                 phone: "+81335538876",
                 coords: [35.6753460619295, 139.78325230857487],
-                googleMapsLink: "https://www.google.com/maps/place/Yoshino/@35.6752461,139.7822746,205m/data=!3m1!1e3!4m10!1m2!2m1!1sRestaurants!3m6!1s0x60188942b3680b27:0x823bb514916ac1cf!8m2!3d35.6752884!4d139.7831908!15sCgtSZXN0YXVyYW50c1oNIgtyZXN0YXVyYW50c5IBE3RvbmthdHN1X3Jlc3RhdXJhbnSaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUlhhamt5YVVOUkVBReABAA!16s%2Fg%2F1tgz5glh?entry=ttu"
-            },
-
-            {
-                name: "Tsukemen Sumida (つけ麺隅田 新川店)",
-                address: "1 Chome-31-4 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
-                phone: "+81355409711",
-                coords: [35.6758793, 139.7861668],
-                googleMapsLink: "https://www.google.com/maps/place/Tsukemen+Sumida/@35.6758793,139.7861668,17z/data=!3m1!4b1!4m6!3m5!1s0x601889425f9134c1:0x6f615321c30f97fc!8m2!3d35.6758793!4d139.7861668!16s%2Fg%2F1tg6vkm2"
-            },
-            {
-                name: "Yoshino",
-                address: "2 Chome-15-2 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
-                phone: "+81335538876",
-                coords: [35.6753460619295, 139.78325230857487],
-                googleMapsLink: "https://www.google.com/maps/place/Yoshino/@35.6752461,139.7822746,205m/data=!3m1!1e3!4m10!1m2!2m1!1sRestaurants!3m6!1s0x60188942b3680b27:0x823bb514916ac1cf!8m2!3d35.6752884!4d139.7831908!15sCgtSZXN0YXVyYW50c1oNIgtyZXN0YXVyYW50c5IBE3RvbmthdHN1X3Jlc3RhdXJhbnSaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUlhhamt5YVVOUkVBReABAA!16s%2Fg%2F1tgz5glh?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Yoshino/@35.6752461,139.7822746,205m/data=!3m1!1e3!4m10!1m2!2m1!1sRestaurants!3m6!1s0x60188942b3680b27:0x823bb514916ac1cf!8m2!3d35.6752884!4d139.7831908!15sCgtSZXN0YXVyYW50c1oNIgtyZXN0YXVyYW50c5IBE3RvbmthdHN1X3Jlc3RhdXJhbnSaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUlhhamt5YVVOUkVBReABAA!16s%2Fg%2F1tgz5glh?entry=ttu",
+                category: "Restaurant"
             },
             {
                 name: "Delhi Shinkawa (新川デリー)",
                 address: "Japan, 〒104-0033 Tokyo, Chuo City, Shinkawa, 1 Chome−19−10 アルファスタイル茅場町 1階",
                 phone: "+81332978922",
                 coords: [35.67794691420887, 139.78506452457975],
-                googleMapsLink: "https://www.google.com/maps/place/Delhi+Shinkawa/@35.6779396,139.7791681,901m/data=!3m1!1e3!4m10!1m2!2m1!1sRestaurants!3m6!1s0x60188942b46a7cd5:0xa27a1084f0f24efa!8m2!3d35.6779552!4d139.785076!15sCgtSZXN0YXVyYW50c1oNIgtyZXN0YXVyYW50c5IBEWluZGlhbl9yZXN0YXVyYW504AEA!16s%2Fg%2F1td7hqf5?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Delhi+Shinkawa/@35.6779396,139.7791681,901m/data=!3m1!1e3!4m10!1m2!2m1!1sRestaurants!3m6!1s0x60188942b46a7cd5:0xa27a1084f0f24efa!8m2!3d35.6779552!4d139.785076!15sCgtSZXN0YXVyYW50c1oNIgtyZXN0YXVyYW50c5IBEWluZGlhbl9yZXN0YXVyYW504AEA!16s%2Fg%2F1td7hqf5?entry=ttu",
+                category: "Restaurant"
             },
             {
                 name: "PEACE COFFEE ROASTERS 新川店",
                 address: "1 Chome-29-10 Shinkawa, Chuo City, Tokyo 104-0033, Japan",
                 phone: "+81362283353",
                 coords: [35.67588323183024, 139.7852323116086],
-                googleMapsLink: "https://www.google.com/maps/place/PEACE+COFFEE+ROASTERS+%E6%96%B0%E5%B7%9D%E5%BA%97/@35.6758496,139.7851915,85m/data=!3m1!1e3!4m6!3m5!1s0x601889bf0d6fc033:0x73710cc6dfb0b595!8m2!3d35.6758602!4d139.7852339!16s%2Fg%2F11qh58l0jr?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/PEACE+COFFEE+ROASTERS+%E6%96%B0%E5%B7%9D%E5%BA%97/@35.6758496,139.7851915,85m/data=!3m1!1e3!4m6!3m5!1s0x601889bf0d6fc033:0x73710cc6dfb0b595!8m2!3d35.6758602!4d139.7852339!16s%2Fg%2F11qh58l0jr?entry=ttu",
+                category: "Cafe"
             },
             {
                 name: "Medetai-ya",
                 address: "Japan, 〒104-0033 Tokyo, Chuo City, Shinkawa, 1 Chome−21−8 石田ビル",
                 phone: "+819032336844",
                 coords: [35.676830276457736, 139.78613488283935],
-                googleMapsLink: "https://www.google.com/maps/place/Medetai-ya/@35.6767224,139.7856747,87m/data=!3m2!1e3!5s0x601889426786ee93:0xe6913ecbdccefe25!4m6!3m5!1s0x6018894258cc88d1:0x4229f33c9d129a95!8m2!3d35.67681!4d139.7861418!16s%2Fg%2F11bbx0b_wm?entry=ttu"
+                googleMapsLink: "https://www.google.com/maps/place/Medetai-ya/@35.6767224,139.7856747,87m/data=!3m2!1e3!5s0x601889426786ee93:0xe6913ecbdccefe25!4m6!3m5!1s0x6018894258cc88d1:0x4229f33c9d129a95!8m2!3d35.67681!4d139.7861418!16s%2Fg%2F11bbx0b_wm?entry=ttu",
+                category: "Restaurant"
             },
             {
-                name: "DualY wine & tapas",
-                address: "Japan, 〒104-0033 Tokyo, Chuo City, Shinkawa, 1 Chome−30−7 茅場町スカイハイツ",
-                phone: "+81355420187",
-                coords: [35.67622136787882, 139.7854632089664],
-                googleMapsLink: "https://www.google.com/maps/place/DualY+wine+%26+tapas/@35.6761679,139.7852444,70m/data=!3m1!1e3!4m6!3m5!1s0x601889ee13d6df4b:0x28e3306dff488fb0!8m2!3d35.6762248!4d139.785463!16s%2Fg%2F11h7kvjmmt?entry=ttu"
+                name: "Maruetsu Petit Shinkawa 1-Chome Shop",
+                address: "〒104-0033 Tokyo, Chuo City, Shinkawa, 1 Chome−28−44 新川K・Tビル １階",
+                phone: "0355414300",
+                coords: [35.675949575640324, 139.78469920201584],
+                googleMapsLink: "https://www.google.com/maps/place/Maruetsu+Petit+Shinkawa+1-Chome+Shop/@35.675913,139.7847849,21z/data=!3m1!5s0x601889429127a479:0xf54ce301881f5924!4m14!1m7!3m6!1s0x6018894289cc0e3f:0x1baf548c93cc5e5b!2sKayabacho+Sky+Heights!8m2!3d35.6761658!4d139.7855947!16s%2Fg%2F1tz75zbf!3m5!1s0x6018894291209adb:0x8a969101cf1c14d1!8m2!3d35.6759285!4d139.7846968!16s%2Fg%2F1hf23p5qb?entry=ttu",
+                category: "Convenience Store"
+            },
+            {
+                name: "Starbucks Coffee - Kayabacho",
+                address: "〒103-0025 Tokyo, Chuo City, Nihonbashikayabacho, 1 Chome−12−2 樋口本店ビル 1F",
+                phone: "0336601615",
+                coords: [35.679376483973805, 139.7807217690839],
+                googleMapsLink: "https://www.google.com/maps/place/Starbucks+Coffee+-+Kayabacho/@35.6793552,139.7803905,20z/data=!3m1!5s0x6018895b0bac7791:0x85eaa9ffa9c44eb2!4m10!1m2!2m1!1sStarbucks!3m6!1s0x6018895b0a515a33:0x99afa66062c7b288!8m2!3d35.6793552!4d139.7807179!15sCglTdGFyYnVja3MiA4gBAVoLIglzdGFyYnVja3OSAQtjb2ZmZWVfc2hvcOABAA!16s%2Fg%2F1v94018p?entry=ttu",
+                category: "Cafe"
+            },
+            //Globis Side
+
+            {
+                name: "GLOBIS University (Main Campus)(グロービス経営大学院 東京校)",
+                address: "〒102-0084 Tokyo, Chiyoda City, Nibancho, 5-1 Sumitomo Fudosan Kojimachi Bldg",
+                coords: [35.68541971283763, 139.73687895686083],
+                googleMapsLink: "https://www.google.com/maps/place/Graduate+School+of+Management,+GLOBIS+University/@35.6854028,139.7354054,287m/data=!3m3!1e3!4b1!5s0x60188c637c6b9451:0xa84b8ae5bd2e0543!4m6!3m5!1s0x60188c637954c8f7:0xf45136104fe98b59!8m2!3d35.6854014!4d139.7368816!16s%2Fm%2F0bhbx0c?entry=ttu",
+                category: "Education"
+            },
+            {
+                name: "GLOBIS University (Annex)",
+                address: "102-0083 Tokyo, Chiyoda City, Kojimachi, 4 Chome−2−6, Sumitomo Fudosan Kojimachi First Bldg., 10F",
+                coords: [35.68420823478087, 139.73678641863552],
+                googleMapsLink: "https://www.google.com/maps/place/Graduate+School+of+Management,+GLOBIS+University/@35.6854028,139.7354054,287m/data=!3m3!1e3!4b1!5s0x60188c637c6b9451:0xa84b8ae5bd2e0543!4m6!3m5!1s0x60188c637954c8f7:0xf45136104fe98b59!8m2!3d35.6854014!4d139.7368816!16s%2Fm%2F0bhbx0c?entry=ttu",
+                category: "Education"
+            },
+            {
+                name: "Starbucks Coffee - Kojimachi",
+                address: "〒102-0083 Tokyo, Chiyoda City, Kojimachi, 3 Chome−2−5 垣見麹町ビル別館 1F",
+                coords: [35.68434675493546, 139.73907377958932],
+                googleMapsLink: "https://www.google.com/maps/place/Starbucks+Coffee+-+Kojimachi/@35.6841581,139.7383747,19.23z/data=!3m1!5s0x60188c7b2d521f6f:0x4be8d941fee660d2!4m9!1m2!2m1!1sGlobis+Annex!3m5!1s0x60188c7b2d5c84e5:0x4b49ae82d90990c9!8m2!3d35.68429!4d139.7390572!16s%2Fg%2F1tgqjdvr?entry=ttu",
+                category: "Cafe"
+            },
+            {
+                name: "Excelsior Caffé Kōjimachi",
+                address: "〒102-0083 Tokyo, Chiyoda City, Kojimachi, 4 Chome−1 西脇ビル １Ｆ",
+                coords: [35.6836306348319, 139.73738126466114],
+                googleMapsLink: "https://www.google.com/maps/place/Excelsior+Caff%C3%A9+K%C5%8Djimachi/@35.6836173,139.7370993,21z/data=!3m1!5s0x60188c649e77df83:0x82148216c10025f0!4m10!1m2!2m1!1sCoffee!3m6!1s0x60188c7b53577b15:0x8a7fce169f4aa361!8m2!3d35.6836173!4d139.7373808!15sCgZDb2ZmZWVaCCIGY29mZmVlkgEEY2FmZZoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VSRWIwdDFaSEpSUlJBQuABAA!16s%2Fg%2F1tls2v3g?entry=ttu",
+                category: "Cafe"
+            },
+            {
+                name: "Tonkatsu Matsunoya",
+                address: "〒102-0083 Tokyo, Chiyoda City, Kojimachi, 4 Chome−1−5 麹町志村ビル",
+                coords: [35.68361511213745, 139.73715864129431],
+                googleMapsLink: "https://www.google.com/maps/place/Tonkatsu+Matsunoya/@35.6836061,139.7368814,21z/data=!3m1!5s0x60188c63542a51fd:0xad124783dedfffbf!4m9!1m2!2m1!1sCoffee!3m5!1s0x60188d4653ef9db3:0x8b0c180d4f521796!8m2!3d35.683606!4d139.737163!16s%2Fg%2F11hk0lgxmm?entry=ttu",
+                category: "Restaurant"
+            },
+            {
+                name: "Toritetsu Kojimachi",
+                address: "〒102-0083 Tokyo, Chiyoda City, Kojimachi, 4 Chome−1−3, Serie Bldg, 2F",
+                coords: [35.6836866284433, 139.73756244970946],
+                googleMapsLink: "https://www.google.com/maps/place/Toritetsu+Kojimachi/@35.6837196,139.7372067,21z/data=!3m1!5s0x60188c7b53243779:0xde23118543ee3db5!4m9!1m2!2m1!1sCoffee!3m5!1s0x60188c7b53208d5d:0xb7a9e6a3a7669eff!8m2!3d35.6836714!4d139.7375604!16s%2Fg%2F1v5frxbg?entry=ttu",
+                category: "Restaurant"
+            },
+            {
+                name: "Imayoshi Kojimachi",
+                address: "〒102-0083 Tokyo, Chiyoda City, Kojimachi, 4 Chome−1 地下1階",
+                coords: [35.68375309611339, 139.737569468748],
+                googleMapsLink: "https://www.google.com/maps/place/Imayoshi+Kojimachi/@35.6837686,139.7373502,21z/data=!4m9!1m2!2m1!1sCoffee!3m5!1s0x60188c7b532640ef:0x322ea0bfbcd9b8da!8m2!3d35.6837457!4d139.7375692!16s%2Fg%2F11c3v11phb?entry=ttu",
+                category: "Restaurant"
+            },
+            {
+                name: "Tōryū Kōjimachi",
+                address: "〒102-0083 Tokyo, Chiyoda City, Kojimachi, 4 Chome−２−2",
+                coords: [35.68414757073383, 139.737324947965],
+                googleMapsLink: "https://www.google.com/maps/place/T%C5%8Dry%C5%AB+K%C5%8Djimachi/@35.6841158,139.7370501,20.7z/data=!3m1!5s0x60188c64af4c8eb3:0xaf5812bd68d0b3e2!4m9!1m2!2m1!1sCoffee!3m5!1s0x60188c64a8bfac07:0x9f49310e414693da!8m2!3d35.6841364!4d139.7373247!16s%2Fg%2F1tfkqrp6?entry=ttu",
+                category: "Restaurant"
+            },
+            {
+                name: "Ajanta",
+                address: "〒102-0084 Tokyo, Chiyoda City, Nibancho, 3−11 Vort二番町 １階～２階",
+                coords: [35.68618396383492, 139.73691028450767],
+                googleMapsLink: "https://www.google.com/maps/place/Ajanta/@35.6862239,139.7362742,19.3z/data=!3m1!5s0x60188c6386f46dbd:0xcd7c3c49f8741a3!4m14!1m7!3m6!1s0x60188c637954c8f7:0xf45136104fe98b59!2sGraduate+School+of+Management,+GLOBIS+University!8m2!3d35.6854014!4d139.7368816!16s%2Fm%2F0bhbx0c!3m5!1s0x60188c6386f07019:0xef2adeab8c1b8d16!8m2!3d35.6861406!4d139.7369243!16s%2Fg%2F121g7pdl?entry=ttu",
+                category: "Restaurant"
+            },
+            {
+                name: "Bangkok Pony Shokudō Kōjimachi - バンコック ポニー食堂 麹町店 ",
+                address: "9-2 Nibancho, Chiyoda City, Tokyo 102-0084",
+                coords: [35.68510278538785, 139.73708752000238],
+                googleMapsLink: "https://www.google.com/maps/place/Bangkok+Pony+Shokud%C5%8D+K%C5%8Djimachi/@35.6851543,139.7368682,21z/data=!3m1!5s0x60188c63620c5851:0xdcc10b851eff0f61!4m15!1m8!2m7!1sRestaurants!3m5!2z44OG44Os44Kt44Ol44O844OWIOS6jOeVqueUuuOCu-ODs-OCv-ODvOODk-ODqw!3s0x60188d1f2380b70b:0x34dd88928bf2ac27!4m2!1d139.7360463!2d35.6857906!3m5!1s0x60188d7361de7ca7:0xe12946f230edc646!8m2!3d35.6850965!4d139.7370871!16s%2Fg%2F11qm682tg1?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D",
+                category: "Restaurant"
+            },
+            {
+                name: "Trattoria Fiore - フィオーレ",
+                address: "3-11 Nibancho, Chiyoda City, Tokyo 102-0084",
+                coords: [35.68611613474109, 139.73687466241014],
+                googleMapsLink: "https://www.google.com/maps/place/Trattoria+Fiore/@35.6861082,139.7365991,21z/data=!3m1!5s0x60188c6386f46dbd:0xcd7c3c49f8741a3!4m15!1m8!2m7!1sRestaurants!3m5!2z44OG44Os44Kt44Ol44O844OWIOS6jOeVqueUuuOCu-ODs-OCv-ODvOODk-ODqw!3s0x60188d1f2380b70b:0x34dd88928bf2ac27!4m2!1d139.7360463!2d35.6857906!3m5!1s0x60188c6386f07019:0x6cea6769522c7ce6!8m2!3d35.6861082!4d139.7368807!16s%2Fg%2F1thxqmwp?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D",
+                category: "Restaurant"
+            },
+            {
+                name: "Wada - 和田",
+                address: "3-12 Nibancho, Chiyoda City, Tokyo 102-0084",
+                coords: [35.686215766045066, 139.7369625395404],
+                googleMapsLink: "https://www.google.com/maps/place/Wada/@35.686142,139.7367506,21z/data=!4m15!1m8!2m7!1sRestaurants!3m5!2z44OG44Os44Kt44Ol44O844OWIOS6jOeVqueUuuOCu-ODs-OCv-ODvOODk-ODqw!3s0x60188d1f2380b70b:0x34dd88928bf2ac27!4m2!1d139.7360463!2d35.6857906!3m5!1s0x60188cbeb5ad50e3:0xdb4f8c0584e62576!8m2!3d35.6861668!4d139.7369834!16s%2Fg%2F1tkktw5h?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D",
+                category: "Restaurant"
+            },
+
+            {
+                name: "7-Eleven - セブン-イレブン 麹町駅前店",
+                address: "4-3 Nibancho, Chiyoda City, Tokyo 102-0084",
+                coords: [35.68628027531832, 139.73658763011878],
+                googleMapsLink: "https://www.google.com/maps/place/7-Eleven/@35.6862029,139.7359074,19.79z/data=!3m1!5s0x60188c63bd633179:0x84f01adf4a71678b!4m15!1m8!2m7!1sRestaurants!3m5!2z44OG44Os44Kt44Ol44O844OWIOS6jOeVqueUuuOCu-ODs-OCv-ODvOODk-ODqw!3s0x60188d1f2380b70b:0x34dd88928bf2ac27!4m2!1d139.7360463!2d35.6857906!3m5!1s0x60188c638fd37d83:0x895f4e4545824896!8m2!3d35.6862384!4d139.7365874!16s%2Fg%2F1txfp465?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D",
+                category: "Convenience Store"
+            },
+
+            {
+                name: "Ueshima Coffee House - Nibancho, Chiyoda City",
+                address: "〒102-0084 Tokyo, Chiyoda City, Nibancho, 12−3 ＣＩＲＣＬＥＳ二番町 １階",
+                coords: [35.68711308980378, 139.73620682406002],
+                googleMapsLink: "https://www.google.com/maps/place/Ueshima+Coffee+House+-+Nibancho,+Chiyoda+City/@35.6870897,139.7356771,20z/data=!4m16!1m8!2m7!1sCafe!3m5!2z44OG44Os44Kt44Ol44O844OWIOS6jOeVqueUuuOCu-ODs-OCv-ODvOODk-ODqw!3s0x60188d1f2380b70b:0x34dd88928bf2ac27!4m2!1d139.7360463!2d35.6857906!3m6!1s0x60188d2846bc99c9:0x667bb218c5b56b84!8m2!3d35.687066!4d139.7361327!15sCgRDYWZlWgYiBGNhZmWSAQRjYWZlmgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVVEzY0V0VWNsVjNFQUXgAQA!16s%2Fg%2F11ptxpks98?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D",
+                category: "Cafe"
+            },
+
+            {
+                name: "FamilyMart - ファミリーマート 麹町駅前店",
+                address: "4 Chome-８ Kojimachi, Chiyoda City, Tokyo 102-0083",
+                coords: [35.684859768866765, 139.73723118762447],
+                googleMapsLink: "https://www.google.com/maps/place/FamilyMart/@35.6848142,139.7364865,19.59z/data=!3m1!5s0x60188c649e77df83:0x82148216c10025f0!4m15!1m8!2m7!1sCafe!3m5!2z44OG44Os44Kt44Ol44O844OWIOS6jOeVqueUuuOCu-ODs-OCv-ODvOODk-ODqw!3s0x60188d1f2380b70b:0x34dd88928bf2ac27!4m2!1d139.7360463!2d35.6857906!3m5!1s0x60188c64a0d0f0f1:0x2d4ab6672c5db5ff!8m2!3d35.684827!4d139.7372343!16s%2Fg%2F1tf28p8n?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D",
+                category: "Convenience Store"
+            },
+
+            {
+                name: "Akimoto Unagi Restaurant - 秋本",
+                address: "3 Chome-4-4 Kojimachi, Chiyoda City, Tokyo 102-0083",
+                coords: [35.68474979209156, 139.73746100909523],
+                googleMapsLink: "https://www.google.com/maps/place/Akimoto+Unagi+Restaurant/@35.6847433,139.7366183,19.59z/data=!3m1!5s0x60188c0d584a0c2f:0xdcbe826ada238df6!4m15!1m8!2m7!1sCafe!3m5!2z44OG44Os44Kt44Ol44O844OWIOS6jOeVqueUuuOCu-ODs-OCv-ODvOODk-ODqw!3s0x60188d1f2380b70b:0x34dd88928bf2ac27!4m2!1d139.7360463!2d35.6857906!3m5!1s0x60188c64a235c421:0x8e57b2997061c0fe!8m2!3d35.6847158!4d139.7374662!16s%2Fg%2F1tcwwqjn?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D",
+                category: "Restaurant"
+            },
+
+            {
+                name: "Doutor Coffee Shop Kōjimachi - ドトールコーヒーショップ 麹町店",
+                address: "〒102-0083 Tokyo, Chiyoda City, Kojimachi, 3 Chome−4 啓ビル １Ｆ",
+                coords: [35.68439465794131, 139.7376241624648],
+                googleMapsLink: "https://www.google.com/maps/place/Doutor+Coffee+Shop+K%C5%8Djimachi/@35.6844014,139.7372422,20.77z/data=!3m1!5s0x60188c649e77df83:0x82148216c10025f0!4m16!1m8!2m7!1sCafe!3m5!2z44OG44Os44Kt44Ol44O844OWIOS6jOeVqueUuuOCu-ODs-OCv-ODvOODk-ODqw!3s0x60188d1f2380b70b:0x34dd88928bf2ac27!4m2!1d139.7360463!2d35.6857906!3m6!1s0x60188c64a54659eb:0x824695917910778b!8m2!3d35.6843877!4d139.7376274!15sCgRDYWZlWgYiBGNhZmWSAQtjb2ZmZWVfc2hvcOABAA!16s%2Fg%2F1tf07nq9?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D",
+                category: "Cafe"
+            },
+
+            {
+                name: "Doutor Coffee Shop Kōjimachi - ドトールコーヒーショップ 麹町店",
+                address: "〒102-0083 Tokyo, Chiyoda City, Kojimachi, 3 Chome−4 啓ビル １Ｆ",
+                coords: [35.68439465794131, 139.7376241624648],
+                googleMapsLink: "https://www.google.com/maps/place/Doutor+Coffee+Shop+K%C5%8Djimachi/@35.6844014,139.7372422,20.77z/data=!3m1!5s0x60188c649e77df83:0x82148216c10025f0!4m16!1m8!2m7!1sCafe!3m5!2z44OG44Os44Kt44Ol44O844OWIOS6jOeVqueUuuOCu-ODs-OCv-ODvOODk-ODqw!3s0x60188d1f2380b70b:0x34dd88928bf2ac27!4m2!1d139.7360463!2d35.6857906!3m6!1s0x60188c64a54659eb:0x824695917910778b!8m2!3d35.6843877!4d139.7376274!15sCgRDYWZlWgYiBGNhZmWSAQtjb2ZmZWVfc2hvcOABAA!16s%2Fg%2F1tf07nq9?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D",
+                phone: "0332647566",
+                category: "Cafe"
+            },
+
+            {
+                name: "Yudetaro - ゆで太郎 麹町３丁目店",
+                address: "3 Chome-4-49 Kojimachi, Chiyoda City, Tokyo 102-0083",
+                coords: [35.684613672081625, 139.73757490230184],
+                googleMapsLink: "https://www.google.com/maps/place/Yudetaro/@35.6846435,139.7371854,20.89z/data=!4m15!1m8!2m7!1sCafe!3m5!2z44OG44Os44Kt44Ol44O844OWIOS6jOeVqueUuuOCu-ODs-OCv-ODvOODk-ODqw!3s0x60188d1f2380b70b:0x34dd88928bf2ac27!4m2!1d139.7360463!2d35.6857906!3m5!1s0x60188c64a4a2c66b:0x702bf8dfccdc8051!8m2!3d35.6845941!4d139.7375762!16s%2Fg%2F1tfrrxln?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D",
+                phone: "0332619655",
+                category: "Restaurant"
+            },
+
+            {
+                name: "ZEN cafe marina - ゼン・カフェ マリーナ",
+                address: "〒102-0083 Tokyo, Chiyoda City, Kojimachi, 4 Chome−8 麹町高善ビル 2階",
+                coords: [35.68460464868521, 139.73619543891022],
+                googleMapsLink: "https://www.google.com/maps/place/ZEN+cafe+marina/@35.6849719,139.7355228,19.11z/data=!3m1!5s0x60188c6369468e75:0x92f3ee69747674e1!4m16!1m8!2m7!1sCafe!3m5!2z44OG44Os44Kt44Ol44O844OWIOS6jOeVqueUuuOCu-ODs-OCv-ODvOODk-ODqw!3s0x60188d1f2380b70b:0x34dd88928bf2ac27!4m2!1d139.7360463!2d35.6857906!3m6!1s0x60188c636ec50f83:0x3834af9b662984f0!8m2!3d35.6845658!4d139.736189!15sCgRDYWZlWgYiBGNhZmWSAQRjYWZl4AEA!16s%2Fg%2F12qfzzbsr?entry=ttu&g_ep=EgoyMDI0MDgyMS4wIKXMDSoASAFQAw%3D%3D",
+                phone: "0352139839",
+                category: "Cafe"
+            },
+
+            //Bus stations
+
+            {
+                "name": "Eitaibashi Bus Station (Bus 22 - Tokyo Sta.Marunouchi - Kitaguch)",
+                "address": "1-chōme-24 Shinkawa, Chuo City, Tokyo 104-0033",
+                "coords": [35.676932205780794, 139.7852732253207],
+                "googleMapsLink": "https://www.google.com/maps/place/Eitaibashi/@35.6767029,139.7852853,20z/data=!4m8!3m7!1s0x60188942f0deaa31:0xd5ff4a438982fff0!6m1!1v5!8m2!3d35.676904!4d139.785277!16s%2Fg%2F11fmpclvwg?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Bus Station"
+            },
+
+            {
+                "name": "Eitaibashi Bus Station (Bus 22 - Kinshichō Sta.)",
+                "address": "1-chōme-24 Shinkawa, Chuo City, Tokyo 104-0033",
+                "coords": [35.67718549473558, 139.78523856575518],
+                "googleMapsLink": "https://www.google.com/maps/place/Eitaibashi/@35.6769191,139.7851366,20z/data=!4m18!1m9!3m8!1s0x60188942f0deaa31:0xd5ff4a438982fff0!2sEitaibashi!6m1!1v5!8m2!3d35.676904!4d139.785277!16s%2Fg%2F11fmpclvwg!3m7!1s0x60188942fbb46691:0x4862b9a0b2e23550!6m1!1v5!8m2!3d35.67717!4d139.785242!16s%2Fg%2F11fmpclvwd?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D",
+                "phone": null,
+                "category": "Bus Station"
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         ];
 
@@ -648,38 +861,36 @@
 
 
 
+
+
+
+
+
         //Markers
-        locations.forEach(function (loc) {
-            var icon;
-            if (loc.name.toLowerCase().includes('police')) {
-                icon = policeIcon;
-            } else if (loc.name.toLowerCase().includes('kayabacho sky heights')) {
-                icon = homeIcon;
-            } else if (loc.name.toLowerCase().includes('fire station')) {
-                icon = fireStationIcon;
-            } else if (loc.name.toLowerCase().includes('pharmacy') || loc.name.toLowerCase().includes('drug')) {
-                icon = pharmacyIcon;
-            } else if (loc.name.toLowerCase().includes('clinic')) {
-                icon = clinicIcon;
-            } else if (loc.name.toLowerCase().includes('ministop') ||
-                loc.name.toLowerCase().includes('lawson') ||
-                loc.name.toLowerCase().includes('7-eleven')) {
-                icon = convenienceStoreIcon;
-            } else if (loc.name.toLowerCase().includes('restaurant') ||
-                loc.name.toLowerCase().includes('café') ||
-                loc.name.toLowerCase().includes('cafe') ||
-                loc.name.toLowerCase().includes('coffee') ||
-                loc.name.toLowerCase().includes('delhi') ||
-                loc.name.toLowerCase().includes('tsukemen') ||
-                loc.name.toLowerCase().includes('medetai-ya') ||
-                loc.name.toLowerCase().includes('dualy') ||
-                loc.name.toLowerCase().includes('yoshino')) {
-                icon = restaurantIcon;
-            } else {
-                icon = customIcon;
+        var markers = {};
+
+        function createOrUpdateMarker(loc) {
+            var zoomLevel = map.getZoom();
+            var marker;
+
+            if (markers[loc.name]) {
+                map.removeLayer(markers[loc.name]);
             }
 
-            var marker = L.marker(loc.coords, { icon: icon }).addTo(map);
+            if (zoomLevel <= 15) {
+                marker = L.circleMarker(loc.coords, {
+                    radius: 6,
+                    fillColor: "#ff7800",
+                    color: "#fff",
+                    weight: 1,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                });
+            } else {
+                var icon = getIcon(loc);
+                marker = L.marker(loc.coords, { icon: icon });
+            }
+
             marker.on('click', function () {
                 showSlideUpPanel(loc);
             });
@@ -708,7 +919,71 @@
 
             // Update visibility on zoom
             map.on('zoomend', updateTooltipVisibility);
+
+            return marker;
+        }
+
+        // Update the getIcon function
+        function getIcon(loc) {
+            switch (loc.category) {
+                case "Police":
+                    return policeIcon;
+                case "Residence":
+                    return homeIcon;
+                case "Fire Station":
+                    return fireStationIcon;
+                case "Pharmacy":
+                    return pharmacyIcon;
+                case "Clinic":
+                    return clinicIcon;
+                case "Convenience Store":
+                    return convenienceStoreIcon;
+                case "Restaurant":
+                    return restaurantIcon;
+                case "Cafe":
+                    return cafeIcon;
+                case "Bus Station":
+                    return busStationIcon;
+                case "Education":
+                case "Embassy":
+                case "Office":
+                default:
+                    return customIcon;
+            }
+        }
+
+
+        // Create initial markers
+        locations.forEach(function (loc) {
+            markers[loc.name] = createOrUpdateMarker(loc).addTo(map);
         });
+
+        // Update markers on zoom change
+        map.on('zoomend', function () {
+            locations.forEach(function (loc) {
+                markers[loc.name] = createOrUpdateMarker(loc).addTo(map);
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         function createUserLocationMarker(latlng) {
             return L.circleMarker(latlng, {
