@@ -12,7 +12,8 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-solid-rounded/css/uicons-solid-rounded.css'>
-    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet'
+        href='https://cdn-uicons.flaticon.com/2.5.1/uicons-regular-rounded/css/uicons-regular-rounded.css'>
 
 
     <style>
@@ -1323,126 +1324,126 @@
 
 
 
-       // GeoJSON data for all lines
-var geojsonData = {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": { 
-        "routeName": "Route 1",
-        "message": "Take Bus No.22 to go Home",
-        "scheduleUrl": "https://www.google.com/maps/place/Kayabach%C5%8D/@35.6795259,139.7799805,18.82z/data=!4m18!1m9!3m8!1s0x60188942f0deaa31:0xd5ff4a438982fff0!2sEitaibashi!6m1!1v5!8m2!3d35.676904!4d139.785277!16s%2Fg%2F11fmpclvwg!3m7!1s0x6018895a1f2cf2bd:0x49502dc3be8ff944!6m1!1v5!8m2!3d35.6797412!4d139.7807944!16s%2Fg%2F11h45g1vj1?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
-      },
-      "geometry": {
-        "coordinates": [
-          [139.78087688650572, 35.67965677408658],
-          [139.7816992057596, 35.679214127108054],
-          [139.78249026209397, 35.67873505976097],
-          [139.7829448658677, 35.67845464748919],
-          [139.78340190067712, 35.678168309997034],
-          [139.78416639105762, 35.67769343986747],
-          [139.78520699816306, 35.67710948411016]
-        ],
-        "type": "LineString"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": { 
-        "routeName": "Route 2",
-        "message": "Take Bus 22 to Kayabacho Train Station",
-        "scheduleUrl": "https://www.google.com/maps/place/Eitaibashi/@35.6768616,139.7852704,20.38z/data=!4m18!1m9!3m8!1s0x6018895a4bc1a715:0x62b88825472d4051!2sKayabach%C5%8D!6m1!1v5!8m2!3d35.6800914!4d139.779491!16s%2Fg%2F11h_knwppm!3m7!1s0x60188942f0deaa31:0xd5ff4a438982fff0!6m1!1v5!8m2!3d35.676904!4d139.785277!16s%2Fg%2F11fmpclvwg?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
-      },
-      "geometry": {
-        "coordinates": [
-          [139.7852398112339, 35.67696977623265],
-          [139.7846423741829, 35.67730054472847],
-          [139.78375790033414, 35.6778156732631],
-          [139.78267280148322, 35.678477793190794],
-          [139.78201528696104, 35.678892601362676],
-          [139.78091052876778, 35.67948363161402],
-          [139.78030307880528, 35.679811678564434],
-          [139.77948869519457, 35.680128880057964]
-        ],
-        "type": "LineString"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "routeName": "Route 3",
-        "message": "From Kayabacho Station, <b>enter via 4b (stairs)</b>, find and go to <b>Platform 4</b>, to take the <b><span style='color: teal;'><i class='fi fi-sr-circle-t'></i> Tozai Line</span></b> to go to <b>Takadanobaba Station</b> (get off here <b>to transfer to Yamanote Line</b>)<p><b>8 Stops</b><p>Kayabacho Sta. (Start) <i class='fi fi-rr-arrow-alt-circle-right'></i> Nihombashi Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Otemachi Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Takebashi Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Kudanshita Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Iidabashi Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Kagurazaka Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Waseda Sta. <b><i class='fi fi-rr-arrow-alt-circle-right'></i> Takadanobaba Sta. (Destination)</b>",
-        "scheduleUrl": "https://www.google.com/maps/dir/35.6767197,139.7864643/Shinjuku+Station,+3+Chome-38-1+Shinjuku,+Shinjuku+City,+Tokyo+160-0022/@35.6917995,139.702744,13.19z/am=t/data=!4m11!4m10!1m1!4e1!1m5!1m1!1s0x60188cd0d6b1ba1f:0x1c32a1f1ecacfdd5!2m2!1d139.7005713!2d35.6896067!3e3!5i4?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
-      },
-      "geometry": {
-        "coordinates": [
-          [139.78037739582516, 35.679882003486185],
-          [139.703868247145, 35.71305036346931]
-        ],
-        "type": "LineString"
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "routeName": "Route 4",
-        "message": "Walk and follow signs for <b>JR line</b>, <b>Seibu-Shinjuku Line District Gate</b><p>Transfer to <b><span style='color: #73c11d;'><i class='fi fi-sr-circle-y'></i> Yamanote Line</span></b> via <b>Platform 2</b>. Local for Shinjuku / Shibuya (Counter-Clockwise)<p><b>2 Stops</b><p>Shin-Okubo Station <i class='fi fi-rr-arrow-alt-circle-right'></i> <b>Shinjuku Station (Final Destination)</b>",
-        "scheduleUrl": "https://www.google.com/maps/dir/Takadanobaba+Station,+Japan/Shinjuku+Station,+3+Chome-38-1+Shinjuku,+Shinjuku+City,+Tokyo+160-0022/@35.7016777,139.6915966,15z/am=t/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x60188d1dc045eb3d:0x7c6945dfdf346295!2m2!1d139.7039814!2d35.7134731!1m5!1m1!1s0x60188cd0d6b1ba1f:0x1c32a1f1ecacfdd5!2m2!1d139.7005713!2d35.6896067!3e3?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
-      },
-      "geometry": {
-        "coordinates": [
-          [139.70376932431623, 35.71228821200715],
-          [139.70070968763213, 35.70423200498122],
-          [139.69995726207588, 35.695410957582155],
-          [139.70023896781208, 35.69114279480881]
-        ],
-        "type": "LineString"
-      }
-    }
-  ]
-};
+        // GeoJSON data for all lines
+        var geojsonData = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "routeName": "Route 1",
+                        "message": "Take Bus No.22 to go Home",
+                        "scheduleUrl": "https://www.google.com/maps/place/Kayabach%C5%8D/@35.6795259,139.7799805,18.82z/data=!4m18!1m9!3m8!1s0x60188942f0deaa31:0xd5ff4a438982fff0!2sEitaibashi!6m1!1v5!8m2!3d35.676904!4d139.785277!16s%2Fg%2F11fmpclvwg!3m7!1s0x6018895a1f2cf2bd:0x49502dc3be8ff944!6m1!1v5!8m2!3d35.6797412!4d139.7807944!16s%2Fg%2F11h45g1vj1?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            [139.78087688650572, 35.67965677408658],
+                            [139.7816992057596, 35.679214127108054],
+                            [139.78249026209397, 35.67873505976097],
+                            [139.7829448658677, 35.67845464748919],
+                            [139.78340190067712, 35.678168309997034],
+                            [139.78416639105762, 35.67769343986747],
+                            [139.78520699816306, 35.67710948411016]
+                        ],
+                        "type": "LineString"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "routeName": "Route 2",
+                        "message": "Take Bus 22 to Kayabacho Train Station",
+                        "scheduleUrl": "https://www.google.com/maps/place/Eitaibashi/@35.6768616,139.7852704,20.38z/data=!4m18!1m9!3m8!1s0x6018895a4bc1a715:0x62b88825472d4051!2sKayabach%C5%8D!6m1!1v5!8m2!3d35.6800914!4d139.779491!16s%2Fg%2F11h_knwppm!3m7!1s0x60188942f0deaa31:0xd5ff4a438982fff0!6m1!1v5!8m2!3d35.676904!4d139.785277!16s%2Fg%2F11fmpclvwg?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            [139.7852398112339, 35.67696977623265],
+                            [139.7846423741829, 35.67730054472847],
+                            [139.78375790033414, 35.6778156732631],
+                            [139.78267280148322, 35.678477793190794],
+                            [139.78201528696104, 35.678892601362676],
+                            [139.78091052876778, 35.67948363161402],
+                            [139.78030307880528, 35.679811678564434],
+                            [139.77948869519457, 35.680128880057964]
+                        ],
+                        "type": "LineString"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "routeName": "Route 3",
+                        "message": "From Kayabacho Station, <b>enter via 4b (stairs)</b>, find and go to <b>Platform 4</b>, to take the <b><span style='color: teal;'><i class='fi fi-sr-circle-t'></i> Tozai Line</span></b> to go to <b>Takadanobaba Station</b> (get off here <b>to transfer to Yamanote Line</b>)<p><b>8 Stops</b><p>Kayabacho Sta. (Start) <i class='fi fi-rr-arrow-alt-circle-right'></i> Nihombashi Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Otemachi Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Takebashi Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Kudanshita Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Iidabashi Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Kagurazaka Sta. <i class='fi fi-rr-arrow-alt-circle-right'></i> Waseda Sta. <b><i class='fi fi-rr-arrow-alt-circle-right'></i> Takadanobaba Sta. (Destination)</b>",
+                        "scheduleUrl": "https://www.google.com/maps/dir/35.6767197,139.7864643/Shinjuku+Station,+3+Chome-38-1+Shinjuku,+Shinjuku+City,+Tokyo+160-0022/@35.6917995,139.702744,13.19z/am=t/data=!4m11!4m10!1m1!4e1!1m5!1m1!1s0x60188cd0d6b1ba1f:0x1c32a1f1ecacfdd5!2m2!1d139.7005713!2d35.6896067!3e3!5i4?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            [139.78037739582516, 35.679882003486185],
+                            [139.703868247145, 35.71305036346931]
+                        ],
+                        "type": "LineString"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "routeName": "Route 4",
+                        "message": "Walk and follow signs for <b>JR line</b>, <b>Seibu-Shinjuku Line District Gate</b><p>Transfer to <b><span style='color: #73c11d;'><i class='fi fi-sr-circle-y'></i> Yamanote Line</span></b> via <b>Platform 2</b>. Local for Shinjuku / Shibuya (Counter-Clockwise)<p><b>2 Stops</b><p>Shin-Okubo Station <i class='fi fi-rr-arrow-alt-circle-right'></i> <b>Shinjuku Station (Final Destination)</b>",
+                        "scheduleUrl": "https://www.google.com/maps/dir/Takadanobaba+Station,+Japan/Shinjuku+Station,+3+Chome-38-1+Shinjuku,+Shinjuku+City,+Tokyo+160-0022/@35.7016777,139.6915966,15z/am=t/data=!3m1!4b1!4m14!4m13!1m5!1m1!1s0x60188d1dc045eb3d:0x7c6945dfdf346295!2m2!1d139.7039814!2d35.7134731!1m5!1m1!1s0x60188cd0d6b1ba1f:0x1c32a1f1ecacfdd5!2m2!1d139.7005713!2d35.6896067!3e3?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            [139.70376932431623, 35.71228821200715],
+                            [139.70070968763213, 35.70423200498122],
+                            [139.69995726207588, 35.695410957582155],
+                            [139.70023896781208, 35.69114279480881]
+                        ],
+                        "type": "LineString"
+                    }
+                }
+            ]
+        };
 
-// Add GeoJSON layer to the map with thicker lines and different colors
-var geojsonLayer = L.geoJSON(geojsonData, {
-  style: function (feature) {
-    switch (feature.properties.routeName) {
-      case 'Route 1': return {color: '#007bff', weight: 5};
-      case 'Route 2': return {color: '#28a745', weight: 5};
-      case 'Route 3': return {color: 'teal', weight: 5};
-      case 'Route 4': return {color: '#73c11d', weight: 5};
-    }
-  },
-  onEachFeature: function (feature, layer) {
-    layer.on('click', function () {
-      var popupContent = `<br>${feature.properties.message}<br><br>`;
-      popupContent += `<button style="display: flex; align-items: center; background-color: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 20px; cursor: pointer;" onclick="window.open('${feature.properties.scheduleUrl}', '_blank')">`;
-      popupContent += `<span class="material-icons" style="margin-right: 5px;">schedule</span>`;
-      popupContent += feature.properties.routeName === 'Route 1' || feature.properties.routeName === 'Route 2' ? 'See Bus Schedule' : 'See Train Schedule';
-      popupContent += `</button>`;
-      
-      layer.bindPopup(popupContent).openPopup();
-    });
-  }
-});
+        // Add GeoJSON layer to the map with thicker lines and different colors
+        var geojsonLayer = L.geoJSON(geojsonData, {
+            style: function (feature) {
+                switch (feature.properties.routeName) {
+                    case 'Route 1': return { color: '#007bff', weight: 5 };
+                    case 'Route 2': return { color: '#28a745', weight: 5 };
+                    case 'Route 3': return { color: 'teal', weight: 10 };
+                    case 'Route 4': return { color: '#73c11d', weight: 10 };
+                }
+            },
+            onEachFeature: function (feature, layer) {
+                layer.on('click', function () {
+                    var popupContent = `<br>${feature.properties.message}<br><br>`;
+                    popupContent += `<button style="display: flex; align-items: center; background-color: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 20px; cursor: pointer;" onclick="window.open('${feature.properties.scheduleUrl}', '_blank')">`;
+                    popupContent += `<span class="material-icons" style="margin-right: 5px;">schedule</span>`;
+                    popupContent += feature.properties.routeName === 'Route 1' || feature.properties.routeName === 'Route 2' ? 'See Bus Schedule' : 'See Train Schedule';
+                    popupContent += `</button>`;
 
-// Add the layer to the map only if zoom level is 15 or higher
-map.on('zoomend', function () {
-  if (map.getZoom() >= 15) {
-    if (!map.hasLayer(geojsonLayer)) {
-      map.addLayer(geojsonLayer);
-    }
-  } else {
-    if (map.hasLayer(geojsonLayer)) {
-      map.removeLayer(geojsonLayer);
-    }
-  }
-});
+                    layer.bindPopup(popupContent).openPopup();
+                });
+            }
+        });
 
-// Initial check to add the layer if the map starts at zoom level 15 or higher
-if (map.getZoom() >= 15) {
-  map.addLayer(geojsonLayer);
-}
+        // Add the layer to the map only if zoom level is 15 or higher
+        map.on('zoomend', function () {
+            if (map.getZoom() >= 15) {
+                if (!map.hasLayer(geojsonLayer)) {
+                    map.addLayer(geojsonLayer);
+                }
+            } else {
+                if (map.hasLayer(geojsonLayer)) {
+                    map.removeLayer(geojsonLayer);
+                }
+            }
+        });
+
+        // Initial check to add the layer if the map starts at zoom level 15 or higher
+        if (map.getZoom() >= 15) {
+            map.addLayer(geojsonLayer);
+        }
     </script>
 </body>
 
