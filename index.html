@@ -1378,8 +1378,16 @@
                     },
                     "geometry": {
                         "coordinates": [
-                            [139.78037739582516, 35.679882003486185],
-                            [139.703868247145, 35.71305036346931]
+                            [139.78037289917114, 35.67989518345041],
+                            [139.77443082378528, 35.682177039726554],
+                            [139.76438823644105, 35.68653734560664],
+                            [139.75831933919721, 35.69021702835916],
+                            [139.7511585812291, 35.695477302219146],
+                            [139.74501865364908, 35.70206662325991],
+                            [139.73424165932056, 35.703891516035256],
+                            [139.72102980337746, 35.70581699684],
+                            [139.70378181962514, 35.71228641908871],
+                            [139.70373720171239, 35.712310571010136]
                         ],
                         "type": "LineString"
                     }
@@ -1400,6 +1408,25 @@
                         ],
                         "type": "LineString"
                     }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "routeName": "Route 5",
+                        "message": "<h2>Going to Globis University via Suitengumae Station</h2><p>Proceed to <b>Platform 1</b> and board the <b><span style='color: #68217a;'><i class='fi fi-sr-circle-h'></i> Hanzomon Line</span></b> and get off at <b>Hanzomon Station (Last stop).</b><p><b>5 stops</b><p>Suitengumae Station (origin) <i class='fi fi-rr-arrow-alt-circle-right'></i> Mitsukoshimae Station <i class='fi fi-rr-arrow-alt-circle-right'></i> Otemachi Station <i class='fi fi-rr-arrow-alt-circle-right'></i> Jimbocho Station <i class='fi fi-rr-arrow-alt-circle-right'></i> Kudanshita Station <i class='fi fi-rr-arrow-alt-circle-right'></i> <b>Hanzomon Station (destination)</b><p>To exit, follow signs for <b>Hanzomon District Gate</b>. <b>Exit via 3a</b>. Walk to Globis University.",
+                        "scheduleUrl": "https://www.google.com/maps/dir/35.6767229,139.7864479/%E3%80%92102-0084+Tokyo,+Chiyoda+City,+Nibancho,+5-1+%E4%BD%8F%E5%8F%8B%E4%B8%8D%E5%8B%95%E7%94%A3%E9%BA%B9%E7%94%BA%E3%83%93%E3%83%AB+Graduate+School+of+Management,+GLOBIS+University/@35.6834504,139.7180866,13z/am=t/data=!3m2!4b1!5s0x60188c637c6b9451:0xa84b8ae5bd2e0543!4m10!4m9!1m1!4e1!1m5!1m1!1s0x60188c637954c8f7:0xf45136104fe98b59!2m2!1d139.7368816!2d35.6854014!3e3?entry=tts&g_ep=EgoyMDI0MDgyNi4wKgBIAVAD"
+                    },
+                    "geometry": {
+                        "coordinates": [
+                            [139.78518956700168, 35.68295553873098],
+                            [139.77409311939294, 35.68592986665408],
+                            [139.76373151901885, 35.68692594398067],
+                            [139.75772084538352, 35.69595135300827],
+                            [139.75108675133816, 35.695360011099794],
+                            [139.74175105982113, 35.68624661713622]
+                        ],
+                        "type": "LineString"
+                    }
                 }
             ]
         };
@@ -1412,6 +1439,7 @@
                     case 'Route 2': return { color: '#28a745', weight: 5 };
                     case 'Route 3': return { color: 'teal', weight: 10 };
                     case 'Route 4': return { color: '#73c11d', weight: 10 };
+                    case 'Route 5': return { color: '#68217a', weight: 10 };
                 }
             },
             onEachFeature: function (feature, layer) {
@@ -1419,7 +1447,7 @@
                     var popupContent = `<br>${feature.properties.message}<br><br>`;
                     popupContent += `<button style="display: flex; align-items: center; background-color: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 20px; cursor: pointer;" onclick="window.open('${feature.properties.scheduleUrl}', '_blank')">`;
                     popupContent += `<span class="material-icons" style="margin-right: 5px;">schedule</span>`;
-                    popupContent += feature.properties.routeName === 'Route 1' || feature.properties.routeName === 'Route 2' ? 'See Bus Schedule' : 'See Train Schedule';
+                    popupContent += feature.properties.routeName === 'Route 1' || feature.properties.routeName === 'Route 2' ? 'See Bus Schedule' : 'See Journey';
                     popupContent += `</button>`;
 
                     layer.bindPopup(popupContent).openPopup();
