@@ -1457,11 +1457,11 @@
                     "geometry": {
                         "coordinates": [
                             [139.78517804375878, 35.68296930489629],
-                            [139.77359595610875,35.68709623403777],
-                            [139.76326450000795,35.68542047523718],
-                            [139.75761354027082,35.69595200374516],
-                            [139.75111463292433,35.69555667206363],
-                            [139.7416477444429,35.68571129518482]
+                            [139.77359595610875, 35.68709623403777],
+                            [139.76326450000795, 35.68542047523718],
+                            [139.75761354027082, 35.69595200374516],
+                            [139.75111463292433, 35.69555667206363],
+                            [139.7416477444429, 35.68571129518482]
                         ],
                         "type": "LineString"
                     }
@@ -1473,11 +1473,11 @@
         var geojsonLayer = L.geoJSON(geojsonData, {
             style: function (feature) {
                 switch (feature.properties.routeName) {
-                    case 'Route 1': return { color: '#007bff', weight: 5 };
-                    case 'Route 2': return { color: '#28a745', weight: 5 };
-                    case 'Route 3': return { color: 'teal', weight: 10 };
-                    case 'Route 4': return { color: '#73c11d', weight: 10 };
-                    case 'Route 5': return { color: '#68217a', weight: 10 };
+                    case 'Route 1': return { color: '#007bff', weight: 5, opacity: 0.7 };
+                    case 'Route 2': return { color: '#28a745', weight: 5, opacity: 0.7 };
+                    case 'Route 3': return { color: 'teal', weight: 10, opacity: 0.7 };
+                    case 'Route 4': return { color: '#73c11d', weight: 10, opacity: 0.7 };
+                    case 'Route 5': return { color: '#68217a', weight: 10, opacity: 0.7 };
                 }
             },
             onEachFeature: function (feature, layer) {
